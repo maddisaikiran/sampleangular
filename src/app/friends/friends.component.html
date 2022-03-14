@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="mt-5">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Full Name</th>
+            <th>Mobile</th>
+            <th>EmailId</th>
+            
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr *ngFor="let user of users">
+            
+            <td>{{user.fullName}}</td>
+            <td>{{user.mobile}}</td>
+            <td>{{user.emailId}}</td>
+        
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div>
+    <h2 style="text-align: center">Admin Registration</h2>
+    <form>
+        <label for="adminName" >Admin Name:</label><br>
+        <input type="text" [(ngModel)]="adm.name"  placeholder="Enter Admin Name"id="name" name="name"><br>
+        <label for="location">Password:</label><br>
+        <input type="password"[(ngModel)]="adm.pass" placeholder="Enter Password" id="Location" name="Location"><br><br></form>
+        <input class="btn btn-primary" type="submit"(click)="loginAdminAngular(adm.name,adm.pass)" name="Login as Admin">
+</div> 

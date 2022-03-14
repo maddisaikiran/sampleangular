@@ -1,0 +1,62 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from '../user';
+import { UserService } from '../user.service';
+
+@Component({
+  selector: 'app-userlogin',
+  templateUrl: './userlogin.component.html',
+  styleUrls: ['./userlogin.component.css']
+})
+export class UserloginComponent implements OnInit {
+
+  loginForm: FormGroup;
+
+  user: User = new User();
+
+  constructor(
+    private router: Router,
+    private service: UserService
+  ) {
+    this.user = new User();
+    this.loginForm = new FormGroup({
+      email: new FormControl("", Validators.required),
+      password: new FormControl("", [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+     role: new FormControl(""),
+    });
+  }
+
+  ngOnInit() {}
+
+  login() {
+    if(this.loginForm.value.role == "user"){
+      console.log(this.loginForm.value.email);
+      console.log(this.loginForm.value.password);
+        this.user.emailId = this.loginForm.value.email;
+        this.user.password = this.loginForm.value.password;
+        this.service
+          .getUserByEmailIdAndPassword(this.user)
+          .subscribe(async (userData: User) => {
+            this.user = userData;
+            if (userData != null) {
+              // localStorage.setItem("isAuthenticated", "true");
+              localStorage.setItem("user", JSON.stringify(userData));
+              this.router.navigate(["/dashboard"]);
+    }
+    
+         else {
+            this.ngOnInit();
+            this.loginForm.patchValue({
+              username: "",
+              password: "",
+            });
+            this.router.navigate([""]);
+          }
+        });
+      }   
+  }
+}

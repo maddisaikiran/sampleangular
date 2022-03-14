@@ -1,0 +1,74 @@
+.register-page {
+  font-family: "Montserrat", sans-serif;
+  background: #f6f8fb;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 72% 100%;
+}
+
+.register-box {
+  margin-left: 800px;
+}
+
+.register-card-body {
+  border-radius: 0.7rem;
+  padding: 2rem;
+}
+
+.card {
+  border-radius: 0.7rem;
+}
+
+button {
+  border-radius: 0.3rem;
+  background-color: #f26f26;
+  margin: 0.7rem 0;
+  color: #fff;
+  font-size: medium;
+  font-weight: bold;
+}
+
+button:hover {
+  border-radius: 0.3rem;
+  background-color: #de580d;
+  margin: 0.7rem 0;
+  color: #fff;
+  font-size: medium;
+  font-weight: bold;
+  transition: color 0.15s ease-in, background-color 0.15s ease-in,
+    border-color 0.15s ease-in, box-shadow 0.15s ease-in;
+}
+
+img {
+  width: 170px;
+}
+
+h4 {
+  font-family: "Montserrat", sans-serif;
+  color: rgb(32, 32, 32);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+::selection {
+  color: white;
+  background: #f26925;
+}
+
+.icheck-primary
+  > input:first-child:checked
+  + input[type="hidden"]
+  + label::before,
+.icheck-primary > input:first-child:checked + label::before {
+  background-color: #f26f26;
+  border-color: #de580d;
+}
+
+.icheck-primary
+  > input:first-child:hover
+  + input[type="hidden"]
+  + label::before,
+.icheck-primary > input:first-child:hover + label::before {
+  border-color: #de580d;
+}
