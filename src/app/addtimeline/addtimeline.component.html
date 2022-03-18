@@ -1,0 +1,56 @@
+<div class="wrapper">
+    
+    <div class="content-wrapper" style="min-height: 2077.69px;">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <h1>Add TimeLine</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-12">
+                        <!-- general form elements -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Add Timeline Details</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form [formGroup]="AddTimelineForm" (ngSubmit)="addTimeLines()">
+                                <div class="card-body">
+                                    
+                                    <div class="form-group">
+                                        <label for="timeLineName">Name</label>
+                                        <input type="text" class="form-control" id="timeLineName"
+                                            placeholder="Timeline  Name"
+                                            formControlName="timeLineName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message">Message</label>
+                                        <input type="text" class="form-control" id="message"
+                                            placeholder="Timeline  Description"
+                                            formControlName="message">
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button [disabled]="!AddTimelineForm.valid" type="submit" class="btn">Add Timeline
+                                        </button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

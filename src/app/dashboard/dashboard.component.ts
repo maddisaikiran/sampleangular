@@ -16,7 +16,9 @@ export class DashboardComponent implements OnInit {
     password:"",
     userStatus:true,
     admin:null,
-    friend: null
+    friend: null,
+    mytimelines:null,
+    message:null
   }
   constructor(private service: UserService) {
     this.getUsersDetails();

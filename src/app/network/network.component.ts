@@ -38,6 +38,7 @@ sendFriendRequest(userFriend:User,statusCode:string){
 let newRequest: Friend=new Friend();
 if(userFriend && userFriend.friend && userFriend.friend.id){
 newRequest.id = userFriend.friend.id
+
 }
 newRequest.user=this.loggedInUser;
 newRequest.friend=userFriend;

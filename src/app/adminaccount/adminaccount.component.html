@@ -20,7 +20,7 @@
                                         aria-expanded="true">
                                         <thead class="thead-light">
                                             <tr>
-                                                <th style="width: 30px">ID</th>
+                                              
                                                 <th>FullName</th>
                                                 <th>Mobile</th>
                                                 <th>EmailId</th>
@@ -30,7 +30,7 @@
                                         </thead>
                                         <tbody *ngFor="let user of users">
                                             <tr>
-                                                <td>{{user.id}}</td>
+                                               
                                                 <td>{{user.fullName}}</td>
                                                 <td>{{user.mobile}}</td>
                                                 <td>{{user.emailId}}</td>
@@ -48,12 +48,17 @@
                                                                 userStatus}}</span> </div> -->
                                                 </td>
                                                 <td class="text-center">
-                                                    <button type="button" class="btn" (click)="update(user.id)"><i
-                                                            class="fas fa-user-edit"></i>&nbsp;&nbsp;Update</button>
+                                                    <div *ngIf="user.userStatus">
+                                                    <button type="button" class="btn" (click)="update(user)"><i
+                                                            class="fas fa-user-edit"></i>&nbsp;&nbsp;active</button>
+                                                        </div>
                                                     &nbsp;&nbsp;
-                                                    &nbsp; <button type="button" class="btn "
-                                                        (click)="delete(user.id)"><i
-                                                            class="fas fa-trash-alt"></i>&nbsp;&nbsp;Delete</button>
+                                                    &nbsp;
+                                                    <div *ngIf="!user.userStatus">
+                                                         <button type="button" class="btn "
+                                                        (click)="delete(user)"><i
+                                                            class="fas fa-trash-alt"></i>&nbsp;&nbsp;disactive</button>
+                                                    </div>
                                                 </td>
                                             </tr>
     

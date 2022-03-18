@@ -18,9 +18,34 @@ export class AdminaccountComponent implements OnInit {
     });
   }
 
-  public update(id :number): void{
-    this.router.navigateByUrl("/updateuser", {
-      state: {id: id},
-    });
+  // public update(id :number): void{
+  //   this.router.navigateByUrl("/updateuser", {
+  //     state: {id: id},
+  //   });
+  // }
+
+  update(users: User){
+    // let d = {
+    //   id: userSelected.id,
+    //  userStatus: true 
+    // };
+   // for(let user of this.users)
+    this.service.updateUserStatus(users.id).subscribe((res) => {
+     users.userStatus = false;
+    console.log(res);
+      this.ngOnInit();
+    })
+
+  }
+  delete(user: User){
+
+    this.service.updateUserStatuss(user.id).subscribe((res) => {
+      console.log(res);
+     // user.userStatus = false;
+      this.ngOnInit();
+    })
+    
+    
+  
   }
 }

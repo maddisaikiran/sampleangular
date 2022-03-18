@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import * as alertify from 'alertifyjs';
 
 @Component({
   selector: 'app-signup',
@@ -43,14 +44,16 @@ export class SignupComponent implements OnInit {
     this.user.emailId = this.registerForm.value.email;
     this.user.mobile = this.registerForm.value.mobile;
     this.user.password = this.registerForm.value.password;
+    this.user.userStatus = this.registerForm.value.userStatus;
 
     // this.user.userStatus = this.registerForm.value.userStatus;
     this.service.addUser(this.user).subscribe((data) => {
           console.log(data);
-        
+        alertify.success("User successfully created");
         });
     
     // localStorage.setItem("role", "user");
+
    
     this.router.navigate(["/userlogin"]);
   }

@@ -1,4 +1,5 @@
 import { FriendStatus } from "./friend-status";
+import { Timeline } from "./timeline";
 import { User } from "./user";
 
 export class Friend {
@@ -7,4 +8,5 @@ export class Friend {
     friend: User;
     status: FriendStatus;
     statusCode:string;
+    mytimelines: Timeline;
 }

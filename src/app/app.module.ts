@@ -20,6 +20,10 @@ import { UsersignupComponent } from './usersignup/usersignup.component';
 import { NetworkComponent } from './network/network.component';
 import { FriendsComponent } from './friends/friends.component';
 import { BaseComponent } from './base/base.component';
+import { AddtimelineComponent } from './addtimeline/addtimeline.component';
+import { MytimelineComponent } from './mytimeline/mytimeline.component';
+import { ViewtimelineComponent } from './viewtimeline/viewtimeline.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,10 @@ import { BaseComponent } from './base/base.component';
     NetworkComponent,
     FriendsComponent,
     BaseComponent,
+    AddtimelineComponent,
+    MytimelineComponent,
+    ViewtimelineComponent,
+    LandingpageComponent,
    
   ],
   imports: [

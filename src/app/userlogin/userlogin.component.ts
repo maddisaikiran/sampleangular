@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import * as alertify from 'alertifyjs';
 
 @Component({
   selector: 'app-userlogin',
@@ -27,36 +28,59 @@ export class UserloginComponent implements OnInit {
         Validators.minLength(3),
       ]),
      role: new FormControl(""),
+    // userStatus: new FormControl(true, Validators.required),
     });
   }
 
   ngOnInit() {}
 
   login() {
-    if(this.loginForm.value.role == "user"){
-      console.log(this.loginForm.value.email);
-      console.log(this.loginForm.value.password);
-        this.user.emailId = this.loginForm.value.email;
-        this.user.password = this.loginForm.value.password;
-        this.service
+    // if(this.user.userStatus == true){
+      if(this.loginForm.value.role == "user"){
+        console.log(this.loginForm.value.email);
+        console.log(this.loginForm.value.password);
+          this.user.emailId = this.loginForm.value.email;
+          this.user.password = this.loginForm.value.password;
+         this.user.userStatus = this.loginForm.value.userStatus;
+          this.service
           .getUserByEmailIdAndPassword(this.user)
           .subscribe(async (userData: User) => {
             this.user = userData;
-            if (userData != null) {
+            if (userData != null && this.user.userStatus == true && this.user.emailId == userData.emailId && this.user.password== userData.password) {
               // localStorage.setItem("isAuthenticated", "true");
               localStorage.setItem("user", JSON.stringify(userData));
+              alertify.success("User login successfully goes to dashboard")
               this.router.navigate(["/dashboard"]);
-    }
-    
-         else {
-            this.ngOnInit();
-            this.loginForm.patchValue({
-              username: "",
-              password: "",
-            });
-            this.router.navigate([""]);
-          }
-        });
-      }   
+            }
+  });
+        //  }
+        //  else {
+        //   this.ngOnInit();
+        //   this.loginForm.patchValue({
+        //     username: "",
+        //     password: "",
+        //   });
+        //   this.router.navigate([""]);
+        // }
+         
+        }
+        else {
+          this.ngOnInit();
+          this.loginForm.patchValue({
+            username: "",
+            password: "",
+          });
+          alertify.error("wrong email and password");
+          this.router.navigate([""]);
+        }
+      // }   
+      // else{
+      //   this.ngOnInit();
+      //   this.loginForm.patchValue({
+      //     username: "",
+      //     password: "",
+      //   });
+      //   this.router.navigate([""]);
+      // }
   }
 }
