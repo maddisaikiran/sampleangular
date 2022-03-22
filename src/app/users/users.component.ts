@@ -13,7 +13,7 @@ export class UsersComponent implements OnInit {
   constructor(private service: UserService, private router: Router) { }
 
   ngOnInit() {
-    this.service.getAllUsers().subscribe(res => {
+    this.service.getAllUser().subscribe(res => {
       this.users = res;
     })
   }

@@ -23,7 +23,7 @@ export class UserService {
    public updateUser(user: User): Observable<User>{
     return this.http.put<User>("http://localhost:8080/user",user);
   }
-   public getAllUsers(): Observable<User[]>{
+   public getAllUser(): Observable<User[]>{
      return this.http.get<User[]>("http://localhost:8080/users");
   }
   public getUserById(id: number): Observable<User>{
