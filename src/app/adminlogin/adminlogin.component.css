@@ -1,4 +1,4 @@
-input[type=text], input[type=number], input[type=password], select {
+/* input[type=text], input[type=number], input[type=password], select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -33,9 +33,51 @@ input[type=text], input[type=number], input[type=password], select {
   
   body  {
     /* background-image:url(../../assets/image/adminlogin.jpg); */
-    /* background-size: contain; */
+     /* background-size: contain; 
     margin: 0px;
     height: 600px;
     padding: 5rem;
-    /* background-color: #cccccc; */
+     background-color: #cccccc; 
+  }  */
+
+
+
+
+  .card{
+    /* margin-top: 10px; */
+    border:none;
+    width: 500px;
+    height: 350px;
+    padding: 10px;
+    position: absolute; 
+    left:50%;
+    
+    /* transform: translate(-50%,-50%); */
+    background: rgb(69, 69, 173);
+    background: linear-gradient(90deg, hsla(205,46%,30%,1) 0%,hsla(260,29%,36%,1) 100% );
+  
+  }
+  .card h2,
+  h6{
+    color: aqua;
+  }
+  label{
+    color: antiquewhite;
+  }
+  a{
+    color: antiquewhite;
+    margin-top: 20px;
+  }
+  .mb-3{
+  padding: 10px;
+  }
+  h2{
+  margin-top: 5px;
+  }
+  .my{
+    margin-top: 15px;
+  }
+  
+  .container{
+    margin-top: 50px;
   }

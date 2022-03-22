@@ -45,4 +45,11 @@ export class TimelineService {
   //    return this.http.post<Timeline>("http://localhost:8080/timelines/user/" + id, id);
   //  }
 
+public getUserByFriendByTimelineById(userId: number): Observable<Timeline[]> {
+  return this.http.get<Timeline[]>("http://localhost:8080/time"+"/pos/"+userId);
+}
+
+
+
+
 }

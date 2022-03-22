@@ -4,6 +4,15 @@
         <h2>Welcome to  FaceBook Admin Account</h2>
     </div>
     </div> -->
+    <div class="back">
+        <button type="reset" routerLink="/admindashboard">Back</button>
+                    </div>
+<div class="search-user">
+        <input class="form-control" [(ngModel)]="searchText" placeholder="Search" autocomplete="off">
+   
+</div>
+
+
 
     <div class="wrapper">
         <div class="content-wrapper" style="min-height: 2077.69px;">
@@ -28,7 +37,7 @@
                                                 <th class="text-center" colspan="2">Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody *ngFor="let user of users">
+                                        <tbody *ngFor="let user of users | filter:searchText">
                                             <tr>
                                                
                                                 <td>{{user.fullName}}</td>

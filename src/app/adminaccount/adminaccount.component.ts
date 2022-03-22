@@ -11,7 +11,7 @@ import { UserService } from '../user.service';
 export class AdminaccountComponent implements OnInit {
   users: User[];
   constructor(private router: Router,private service: UserService) { }
-
+  searchText: any;
   ngOnInit() {
     this.service.getAllUsers().subscribe(res => {
       this.users = res;
@@ -31,7 +31,7 @@ export class AdminaccountComponent implements OnInit {
     // };
    // for(let user of this.users)
     this.service.updateUserStatus(users.id).subscribe((res) => {
-     users.userStatus = false;
+    // users.userStatus = false;
     console.log(res);
       this.ngOnInit();
     })

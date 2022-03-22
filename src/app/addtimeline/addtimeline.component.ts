@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Timeline } from '../timeline';
 import { TimelineService } from '../timeline.service';
 import { User } from '../user';
+import * as alertify from 'alertifyjs';
 
 @Component({
   selector: 'app-addtimeline',
@@ -11,7 +12,7 @@ import { User } from '../user';
   styleUrls: ['./addtimeline.component.css']
 })
 export class AddtimelineComponent implements OnInit {
-
+  mytimelines: Timeline[];
   user: User;
    timeline : Timeline;
    AddTimelineForm: FormGroup;
@@ -27,20 +28,24 @@ export class AddtimelineComponent implements OnInit {
  
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("user"));
+    this.service.getAllMyTimelinesById(this.user.id).subscribe(res => {
+      this.mytimelines = res;
+   })
   }
-  addTimeLines() {
+  public addTimeLines() {
   
     this.timeline.timeLineName = this.AddTimelineForm.value.timeLineName;
     this.timeline.message = this.AddTimelineForm.value.message;
     console.log(this.timeline);
-  
-  //  this.service.addTimeLines(this.timeline).subscribe((res) => {
     this.service.addTimeLine(this.timeline, this.user.id).subscribe((data) =>{
+        // this.timeline.push(this.AddTimelineForm.value);
+
       console.log(data);
     });
-  //  })
+    alertify.success("TimeLine Added Successfully");
+
     
-    this.router.navigate(["/mytimeline"]);
+    // this.router.navigate(["/mytimeline"]);
   }
 
   

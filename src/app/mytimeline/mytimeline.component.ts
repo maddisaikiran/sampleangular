@@ -12,8 +12,6 @@ import { User } from '../user';
 })
 export class MytimelineComponent implements OnInit {
    mytimelines: Timeline[];
-  //users : User[];
-// friendList: Friend[];
   user: User;
   constructor(private service: TimelineService, private router: Router) { }
 

@@ -18,11 +18,38 @@ button {
       border-color 0.15s ease-in, box-shadow 0.15s ease-in;
   }
   
-  .card-header {
+  /* .card-header {
     background-color: #263238;
   }
   
   .card-title {
     font-weight: bold;
     color: white;
+  } */
+
+  .box{
+    width: 50%;
+    border: 1px solid rgb(145, 138, 138);
+    border-radius: 25px;
+    padding: 0px 20px 20px 20px;
+    margin-left: 400px;
   }
+
+  .page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+     /* text-align: center; */
+} 
+.page-box {
+      min-height: 70px;
+      background: #1e293b;
+      margin: 0 -1rem;
+      font-size: 30px;
+      /* text-align: center; */
+    
+    }
+.my{
+    text-align: center;
+    padding-top: 10px;
+}

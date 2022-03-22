@@ -1,116 +1,185 @@
-<!-- <div class="container">
+ <!-- <div class="container">
     <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="text-center">
                 <h1>Signup</h1>
-                <h6>Register Yourself</h6>
+                <h6>Register Yourself</h6> -->
+
+                <!-- <div class="container">
+	                  <div class="simple">
                 
                     <form #signupform="ngForm" (ngSubmit)="signup()">
+                        <h2>Registration page</h2>
+			<br />
                         <div class="form-group">
-                            <label for="exampleInputEmail2" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" name="fullname" [(ngModel)]="user.fullName" #fullname="ngModel">
                             
+                            <input type="text" class="form-control" placeholder="FullName" name="fullname" required pattern="[a-zA-Z]{2,10}"  #fullname="ngModel" [(ngModel)]="user.fullName" [class.is-invalid]="fullname.invalid && fullname.touched">
+                            <div *ngIf="fullname.touched && fullname.invalid" class="text-danger">
+                                <small *ngIf="fullname.errors.required">FullName Required!</small>
+                                <small *ngIf="fullname.errors.pattern">FullName is Invalid</small>
+                            </div>
                           </div>
+                          <br />
                           <div class="form-group">
-                            <label for="exampleInputPassword2" class="form-label">Mobile</label>
-                            <input type="number" class="form-control" name="mobile" [(ngModel)]="user.mobile" #mobile="ngModel">
+                           
+                            <input type="number" class="form-control" placeholder="Mobile" name="mobile" [(ngModel)]="user.mobile" required pattern="[1-9]{1}[0-9]{9}" #mobile="ngModel" [class.is-invalid]="mobile.invalid && mobile.touched">
+                            <div *ngIf="mobile.touched && mobile.invalid" class="text-danger">
+                                <small *ngIf="mobile.errors.required">Mobile Number Required!</small>
+                                <small *ngIf="mobile.errors.pattern">Mobile Number should be of length 10</small>
+                            </div>
                           </div>
+                          <br />
                         <div class="form-group">
-                          <label for="exampleInputEmail1" class="form-label">Email address</label>
-                          <input type="email" class="form-control" name="email" [(ngModel)]="user.emailId" #email="ngModel">
-                          
+         
+                          <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="user.emailId" required pattern="[a-zA-Z0-9]{2,}[@][a-zA-Z]{2,7}[.][a-zA-Z]{2,8}" #email="ngModel" [class.is-invalid]="email.invalid && email.touched">
+                          <div *ngIf="email.touched && email.invalid" class="text-danger">
+                            <small *ngIf="email.errors.required">Email Required!</small>
+                            <small *ngIf="email.errors.pattern">Email is Invalid</small>
                         </div>
+                        </div>
+                        <br />
                         <div class="form-group">
-                          <label for="exampleInputPassword1" class="form-label">Password</label>
-                          <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel">
+                    
+                          <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="user.password" #password="ngModel" [class.is-invalid]="password.invalid && password.touched">
+                          <small class="text-danger" *ngIf="password.invalid && password.touched">Password Required!</small>
                         </div>
-                       
-                        <button type="submit" class="btn btn-primary">Signup</button><br/>
+                       <br />
+                        <button [disabled]="signupform.invalid" type="submit" class="btn btn-primary">Signup</button><br/>
                    
                         <a routerLink="/home">Already Registered? Click to Login</a><br/>
                        
                   
                 </form>
-                </div>
-            </div>  
-        </div>
-    </div>
-</div> -->
-
-
-<div class="register-wrapper">
-  <div class="register-page">
-      <div class="register-box">
-          <div class="card">
-              <div class="card-body register-card-body">
-
-                  <div class="register-logo">
+                      </div>
+                </div> -->
+<!--         
+<div class="back">
+<button type="reset" routerLink="/landingpage">Back</button>
+            </div>
+                    <div class="container">
+                        <div class="simple">
                       
                       <h4>Create an account </h4>
-                  </div>
+                
 
-                  <form [formGroup]="registerForm" autocomplete="off">
-                      <div class="input-group mb-3">
-                          <input type="text" class="form-control" placeholder="Full Name" formControlName="name"
-                              name="name">
-                          <div class="input-group-append">
-                              <div class="input-group-text">
-                                  <span class="fas fa-user"></span>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="input-group mb-3">
-                        <input type="number" class="form-control" placeholder="Phone Number" formControlName="mobile"
-                            name="mobile">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
+                  <form [formGroup]="signupform" autocomplete="off">
+                      
+                        <div class="input-group mb-3">  
+                         
+                          <input type="text" class="form-control" placeholder="Full Name" name="name" #name="ngModel" [(ngModel)]="user.fullName" required 
+                          pattern="[a-zA-Z]{4,10}" [ngModelOptions]="{standalone: true}" [class.is-invalid]="name.invalid && name.touched">
+                              <div *ngIf="name.invalid && name.touched" class="text-danger">
+                                   <small *ngIf="name.errors.pattern">Fullname is Must 4 to 10 words</small>
+                                   <small *ngIf="name.errors.required">Fullname is required</small>
+                       </div> 
                         </div>
+                       <div class="input-group mb-3">
+                        <input type="number" class="form-control" placeholder="Phone Number" required pattern="[1-9]{1}[0-9]{9}"
+                            name="mobile" #mobile="ngModel" [(ngModel)]="user.mobile" [ngModelOptions]="{standalone: true}">
+                            <div *ngIf="mobile.invalid && mobile.touched" class="text-danger">
+                                <small *ngIf="mobile.errors.pattern">mobile must be 10 Digits</small>
+                                <small *ngIf="mobile.errors.required">mobile is required</small>
+                            </div> 
+                       
                     </div>
                       <div class="input-group mb-3">
-                          <input type="email" class="form-control" placeholder="Email" formControlName="email"
-                              name="email">
-                          <div class="input-group-append">
-                              <div class="input-group-text">
-                                  <span class="fas fa-envelope"></span>
-                              </div>
+                          <input type="email" class="form-control" placeholder="Email" [(ngModel)]="user.emailId" required pattern="[a-zA-Z0-9]{2,}[@][a-zA-Z]{2,7}[.][a-zA-Z]{2,8}" 
+                          #email="ngModel" name="email" [ngModelOptions]="{standalone: true}">
+                          <div *ngIf="email.invalid && email.touched" class="text-danger">
+                            <small *ngIf="email.errors.pattern">Required Email pattern is need</small>
+                            <small *ngIf="email.errors.required">Email is required</small>
                           </div>
-                      </div>
+                      </div> 
                       <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" formControlName="password"
-                            name="password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" #password="ngModel" required
+                            name="password" [ngModelOptions]="{standalone: true}">
+                            <div *ngIf="password.invalid && password.touched" class="text-danger">
+                              <small *ngIf="password.errors.required">Password is Required!</small>
                             </div>
-                        </div>
+                             
                     </div>
-                 
-                      <!-- <div class="row">
-                          <div class="col-8">
-                              <div class="form-group clearfix">
-                                  <div class="icheck-primary d-inline">
-                                      <input type="radio" id="hygiene2" name="r1">
-                                      <label for="hygiene2">I agree to the <a href="#" style="color:#f15d1f">terms</a>
-                                      </label>
-                                  </div>
-                              </div>
-                          </div>
-                      </div> -->
+                     <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Confirm Password" name="cpassword" (ngModel)="user.password" required #cpassword="ngModel" [ngModelOptions]="{standalone: true}">
+                    <div *ngIf="cpassword.touched">
+                        <small class="text-danger" *ngIf="cpassword.value !== password.value">Password not match</small>
+                     </div>
+                    </div> 
                      
-                      <div class="col-12">
-                          <button type="submit" [disabled]="!registerForm.valid" (click)="register()"
-                              class="btn btn-block">Register Now</button>
-                      </div>
+                          <button type="submit" (click)="signup()" class="btn btn-primary">Register Now</button>
+                      
                    
                   </form>
-              </div>
-              <!-- /.form-box -->
-          </div><!-- /.card -->
-      </div>
-  </div>
-</div>
+                  <div class=""><b><a routerLink="/userlogin">Already Registered? Click to Login</a></b><br/></div>
+                    </div>
+                    </div> -->
+
+
+
+
+                    <div class="container">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="card">
+                                  <div class="text-center">
+                                  <h2>Create an account</h2>
+                                  
+                                      <form [formGroup]="signupform" autocomplete="off">
+                                          <div class="mb-3">
+                                              <input type="text" class="form-control" placeholder="Full Name" name="name" #name="ngModel" [(ngModel)]="user.fullName" required 
+                                              pattern="[a-zA-Z]{4,10}" [ngModelOptions]="{standalone: true}" [class.is-invalid]="name.invalid && name.touched">
+                                                  <div *ngIf="name.invalid && name.touched" class="text-danger">
+                                                       <small *ngIf="name.errors.pattern" style="font-size: 15px;">Fullname is Must 4 to 10 words</small>
+                                                       <small *ngIf="name.errors.required" style="font-size: 15px;">Fullname is required</small>
+                                           </div> 
+                                              
+                                            </div>
+                                            <div class="mb-3">
+                                              <!-- <label for="exampleInputPassword2" class="form-label">Mobile</label> -->
+                                              <input type="number" class="form-control" placeholder="Phone Number" required pattern="[1-9]{1}[0-9]{9}"
+                            name="mobile" #mobile="ngModel" [(ngModel)]="user.mobile" [ngModelOptions]="{standalone: true}">
+                            <div *ngIf="mobile.invalid && mobile.touched" class="text-danger">
+                                <small *ngIf="mobile.errors.pattern" style="font-size: 15px;">mobile must be 10 Digits</small>
+                                <small *ngIf="mobile.errors.required" style="font-size: 15px;">mobile is required</small>
+                            </div> 
+                                            </div>
+                                          <div class="mb-3">
+                                            <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
+                                            <input type="email" class="form-control" placeholder="Email" [(ngModel)]="user.emailId" required pattern="[a-zA-Z0-9]{2,}[@][a-zA-Z]{2,7}[.][a-zA-Z]{2,8}" 
+                                            #email="ngModel" name="email" [ngModelOptions]="{standalone: true}">
+                                            <div *ngIf="email.invalid && email.touched" class="text-danger">
+                                              <small *ngIf="email.errors.pattern" style="font-size: 15px;">Required Email pattern is need</small>
+                                              <small *ngIf="email.errors.required" style="font-size: 15px;">Email is required</small>
+                                            </div>
+                                            
+                                          </div>
+                                          <div class="mb-3">
+                                            <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
+                                            <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" #password="ngModel" required
+                            name="password" [ngModelOptions]="{standalone: true}">
+                            <div *ngIf="password.invalid && password.touched" class="text-danger">
+                              <small *ngIf="password.errors.required" style="font-size: 15px;">Password is Required!</small>
+                            </div>
+                                          </div>
+                                          <div class="mb-3">
+                                            <!-- <label for="exampleInputPassword1" class="form-label">Confirm-Password</label> -->
+                                            <input type="password" class="form-control" placeholder="Confirm Password" name="cpassword" (ngModel)="user.password" required #cpassword="ngModel" [ngModelOptions]="{standalone: true}">
+                                            <div *ngIf="cpassword.touched">
+                                                <small class="text-danger" *ngIf="cpassword.value !== password.value" style="font-size: 15px;">Password not match</small>
+                                             </div>
+                                          </div>
+                                         
+                                          <button type="submit" (click)="signup()" class="btn btn-primary">Register</button><br/>
+                                         
+                                      </form>
+                                      <b><a routerLink="/userlogin">Already Registered? Click to Login</a></b><br/>
+                                      <b><a routerLink="/landingpage">Go to Main Page</a></b>
+
+                                  </div>
+                              </div>  
+                          </div>
+                      </div>
+                  </div>                   
+
+                
 

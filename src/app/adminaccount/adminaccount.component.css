@@ -4,3 +4,27 @@
     color: black;
 
 }
+button {
+    border-radius: 0.3rem;
+    background-color: #f26f26;
+    /* margin: 0.7rem 0; */
+    color: #fff;
+    font-size: 15px;
+    height: 40px;
+    width:100px;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    border-radius: 0.3rem;
+    background-color: #de580d;
+    /* margin: 0.7rem 0; */
+    color: #fff;
+    font-size: 15px;
+    height: 40px;
+    width:100px;
+    font-weight: bold;
+    transition: color 0.15s ease-in, background-color 0.15s ease-in,
+      border-color 0.15s ease-in, box-shadow 0.15s ease-in;
+  }
+

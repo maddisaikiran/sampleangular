@@ -14,7 +14,8 @@ export class AdminloginComponent{
     public loginAdminAngular(name:string,pass:string){
       console.log(name+"*"+pass);
       if(name=="Admin"&&pass=="password"){
-        this.router.navigate(['/adminaccount']);
+        localStorage.setItem('admin',"admin");
+        this.router.navigate(['/admindashboard']);
       }
     }
 

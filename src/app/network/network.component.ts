@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { endWith, takeUntil } from 'rxjs/operators';
-import { BaseComponent } from '../base/base.component';
+
+
 import { Friend } from '../friend';
 import { FriendService } from '../friend.service';
 import { User } from '../user';
-import { UserHelperService } from '../user-helper.service';
+
 
 @Component({
   selector: 'app-network',
@@ -41,7 +41,9 @@ newRequest.id = userFriend.friend.id
 
 }
 newRequest.user=this.loggedInUser;
+//newRequest.friend =this.loggedInUser;
 newRequest.friend=userFriend;
+//newRequest.user=userFriend;
 newRequest.statusCode=statusCode;
 this.service.createRequest(newRequest).subscribe((resp) => {
   this.getUserFriends();
@@ -54,6 +56,12 @@ this.service.createRequest(newRequest).subscribe((resp) => {
 
 }
 
+
+checkIsFriend(friendId,friend,status){
+if(friend && (friend.userId == this.loggedInUser.id || friend.friendId== this.loggedInUser.id) && friend.status==status){
+  return true;
+}return false;
+}
 
 
 }

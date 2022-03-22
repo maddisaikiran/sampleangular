@@ -1,0 +1,42 @@
+/* button {
+    border-radius: 0.3rem;
+    background-color: #f26f26;
+   
+    color: #fff;
+    font-size: 15px;
+    height: 50px;
+    width:100px;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    border-radius: 0.3rem;
+    background-color: #de580d;
+    
+    color: #fff;
+    font-size: 15px;
+    height: 50px;
+    width:100px;
+    font-weight: bold;
+    transition: color 0.15s ease-in, background-color 0.15s ease-in,
+      border-color 0.15s ease-in, box-shadow 0.15s ease-in;
+  } */
+
+  .page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+     /* text-align: center; */
+} 
+.page-box {
+      min-height: 70px;
+      background: #1e293b;
+      margin: 0 -1rem;
+      font-size: 30px;
+      /* text-align: center; */
+    
+    }
+.my{
+    text-align: center;
+    padding-top: 10px;
+}

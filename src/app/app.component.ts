@@ -13,10 +13,7 @@ export class AppComponent implements OnInit{
    //   this.router.navigate(["/home"]);
    }
 
-   logout(){
-     localStorage.removeItem("user");
-     this.router.navigate([""]);
-   }
+   
 
    constructor(private router: Router){
 

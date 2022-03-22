@@ -2,15 +2,20 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddtimelineComponent } from './addtimeline/addtimeline.component';
 import { AdminaccountComponent } from './adminaccount/adminaccount.component';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FriendsComponent } from './friends/friends.component';
+import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { MytimelineComponent } from './mytimeline/mytimeline.component';
 import { NetworkComponent } from './network/network.component';
 import { PasswordComponent } from './password/password.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProfilesComponent } from './profiles/profiles.component';
+import { AuthGuard } from './shared/auth.guard';
+import { SidenavComponent } from './sidenav/sidenav.component';
 import { SignupComponent } from './signup/signup.component';
 import { UpdateuserComponent } from './updateuser/updateuser.component';
 import { UseraccountComponent } from './useraccount/useraccount.component';
@@ -26,20 +31,13 @@ const routes: Routes = [
     redirectTo:"landingpage",
   },
   {
-    path: "home",
-    component: HomeComponent,
-  },
-  {
     path: "signup",
     component: SignupComponent
   },
   {
-    path: "password",
-    component: PasswordComponent
-  },
-  {
     path: "dashboard",
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate:[AuthGuard]
   },
   // {
   //   path: "profile",
@@ -70,29 +68,59 @@ const routes: Routes = [
     component:UpdateuserComponent
   },
   {
-    path:"network",
-    component:NetworkComponent
-  },
-  {
-    path:"friends",
-    component:FriendsComponent
-  }
-  ,
-  {
-    path:"addtimeline",
-    component:AddtimelineComponent
-  },
-  {
-    path:"mytimeline",
-    component:MytimelineComponent
-  },
-  {
-    path:"viewtimeline",
-    component:ViewtimelineComponent
-  },
-  {
     path: "landingpage",
     component: LandingpageComponent
+  },
+  {
+    path:"admindashboard",
+    component: AdmindashboardComponent
+  },
+  {
+    path:"profiles",
+    component: ProfilesComponent
+  },
+  {
+    path:"sidenav",
+    component: SidenavComponent
+  },
+  {
+     path:"header",
+     component: HeaderComponent
+  },
+  {
+    path:"password",
+    component: PasswordComponent,
+    canActivate:[AuthGuard],
+    children:[
+      {
+          path: "home",
+          component: HomeComponent
+      },
+      {
+        path:"network",
+        component:NetworkComponent
+      },
+      {
+        path:"friends",
+        component:FriendsComponent
+      },
+      {
+        path:"addtimeline",
+        component:AddtimelineComponent
+      },
+      {
+        path:"viewtimeline",
+        component:ViewtimelineComponent
+      },
+      {
+        path:"mytimeline",
+        component:MytimelineComponent
+      },
+      {
+        path: "profile",
+        component: ProfileComponent
+      }
+    ]
   }
 
 ];

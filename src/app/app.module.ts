@@ -24,6 +24,16 @@ import { AddtimelineComponent } from './addtimeline/addtimeline.component';
 import { MytimelineComponent } from './mytimeline/mytimeline.component';
 import { ViewtimelineComponent } from './viewtimeline/viewtimeline.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
+import * as Material from "@angular/material";
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { ProfilesComponent } from './profiles/profiles.component';
+import { MaterialModule } from './material/material.module';
+import { HeaderComponent } from './header/header.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -48,14 +58,26 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
     MytimelineComponent,
     ViewtimelineComponent,
     LandingpageComponent,
-   
+    AdmindashboardComponent,
+    ProfilesComponent,
+    HeaderComponent,
+    SidenavComponent,
+    // MatFormFieldModule,
+    // MatIconModule,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
+    BrowserAnimationsModule, 
+  
+    
+    Ng2SearchPipeModule,
+    MaterialModule
+    
+  
 
   ],
   providers: [],

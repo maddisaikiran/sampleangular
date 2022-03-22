@@ -22,12 +22,9 @@ export class UserloginComponent implements OnInit {
   ) {
     this.user = new User();
     this.loginForm = new FormGroup({
-      email: new FormControl("", Validators.required),
-      password: new FormControl("", [
-        Validators.required,
-        Validators.minLength(3),
-      ]),
-     role: new FormControl(""),
+      email: new FormControl("",Validators.required),
+      password: new FormControl("",Validators.required),
+    // role: new FormControl(""),
     // userStatus: new FormControl(true, Validators.required),
     });
   }
@@ -36,12 +33,12 @@ export class UserloginComponent implements OnInit {
 
   login() {
     // if(this.user.userStatus == true){
-      if(this.loginForm.value.role == "user"){
+      // if(this.loginForm.value.role == "user"){
         console.log(this.loginForm.value.email);
         console.log(this.loginForm.value.password);
-          this.user.emailId = this.loginForm.value.email;
-          this.user.password = this.loginForm.value.password;
-         this.user.userStatus = this.loginForm.value.userStatus;
+        //   this.user.emailId = this.loginForm.value.email;
+        //   this.user.password = this.loginForm.value.password;
+        //  this.user.userStatus = this.loginForm.value.userStatus;
           this.service
           .getUserByEmailIdAndPassword(this.user)
           .subscribe(async (userData: User) => {
@@ -49,8 +46,13 @@ export class UserloginComponent implements OnInit {
             if (userData != null && this.user.userStatus == true && this.user.emailId == userData.emailId && this.user.password== userData.password) {
               // localStorage.setItem("isAuthenticated", "true");
               localStorage.setItem("user", JSON.stringify(userData));
+              localStorage.setItem("name",this.user.fullName);
               alertify.success("User login successfully goes to dashboard")
-              this.router.navigate(["/dashboard"]);
+              this.router.navigate(["/password/home"]);
+            }
+            else{
+              alertify.error("wrong email and password");
+                 this.router.navigate([""]);
             }
   });
         //  }
@@ -63,16 +65,16 @@ export class UserloginComponent implements OnInit {
         //   this.router.navigate([""]);
         // }
          
-        }
-        else {
-          this.ngOnInit();
-          this.loginForm.patchValue({
-            username: "",
-            password: "",
-          });
-          alertify.error("wrong email and password");
-          this.router.navigate([""]);
-        }
+        // }
+        // else {
+        //   this.ngOnInit();
+        //   this.loginForm.patchValue({
+        //     username: "",
+        //     password: "",
+        //   });
+        //   alertify.error("wrong email and password");
+        //   this.router.navigate([""]);
+        // }
       // }   
       // else{
       //   this.ngOnInit();
