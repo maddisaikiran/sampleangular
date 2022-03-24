@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../user';
-import { UserService } from '../user.service';
+import { UserService } from '../service/user.service';
 
 import * as alertify from 'alertifyjs';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-signup',

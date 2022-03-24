@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-profiles',
@@ -13,22 +13,21 @@ export class ProfilesComponent implements OnInit {
     id: null,
     fullName:"",
     mobile:null,
-    emailId:"",
+    email:"",
     password:"",
     userStatus:true,
     admin:null,
     friend: null,
-    mytimelines:null,
-    message:null
+    timelines:null,
   }
   constructor(private service: UserService, private router: Router) { 
     this.getUsersDetails();
   }
   getUsersDetails() {
-    this.service.getAllUsers().subscribe(
+    this.service.getAllUser().subscribe(
       (resp) => {
         console.log(resp);
-        this.userDetails = resp;
+        this.userDetails = resp.data;
       },
       (err) => {
         console.log(err);

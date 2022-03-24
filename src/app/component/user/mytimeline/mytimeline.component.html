@@ -1,0 +1,56 @@
+<div class="container-fluid page">
+    <div class="page-box">
+        <div class="my">My Timelines</div>
+    </div>
+  </div>
+
+
+<div class="wrapper">
+   
+    <div class="content-wrapper" style="min-height: 2077.69px;">
+      
+        <section class="content">
+            <div class="container-fluid">
+                <div class="card-header">
+                    <h3 class="card-title">All My TimeLine List</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            
+                            <div class="card-body">
+                                <table class="table table-bordered table-hover" data-widget="expandable-table"
+                                    aria-expanded="true">
+                                    <thead class="thead-light">
+                                        <tr>
+                                           
+                                            <th>Name</th>
+                                            
+                                            <th>Messages</th>
+                                          
+                                        </tr>
+                                    </thead>
+                                          <tbody *ngFor="let timeline of timelines"> 
+                                      
+                                        <tr>
+                                            
+                                            <td>{{timeline.name}}</td>
+                                            
+                                            <td>{{timeline.message}}</td>
+                                           
+                                        </tr>
+
+                                    </tbody>
+                                   
+
+                                </table>
+                            </div>
+                          
+                            </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

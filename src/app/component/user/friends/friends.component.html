@@ -1,0 +1,28 @@
+<div class="container-fluid page">
+  <div class="page-box">
+      <div class="my">Friends List</div>
+  </div>
+</div>
+<div class="container">
+    <div class="mt-5">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Full Name</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr *ngFor="let user of users">
+            
+            <td>{{user.fullName}}</td>
+            <td>{{user.mobile}}</td>
+            <td>{{user.email}}</td>
+        
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

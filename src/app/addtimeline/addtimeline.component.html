@@ -4,65 +4,7 @@
     </div>
   </div>
 
-<!-- <div class="back">
-    <button type="reset" routerLink="/dashboard">Back</button>
-                </div> -->
 
- <!-- <div class="wrapper">
-    
-    <div class="content-wrapper" style="min-height: 2077.69px;">
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-12">
-                        <h1>Add TimeLine</h1>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    
-                    <div class="col-md-12">
-                      
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Add Timeline Details</h3>
-                            </div>
-                            
-                            <form [formGroup]="AddTimelineForm" (ngSubmit)="addTimeLines()">
-                                <div class="card-body">
-                                    
-                                    <div class="form-group">
-                                        <label for="timeLineName">Name</label>
-                                        <input type="text" class="form-control" id="timeLineName"
-                                            placeholder="Timeline  Name"
-                                            formControlName="timeLineName">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="message">Message</label>
-                                        <input type="text" class="form-control" id="message"
-                                            placeholder="Timeline  Description"
-                                            formControlName="message">
-                                    </div>
-                                </div>
-                               
-
-                                <div class="card-footer">
-                                    <button [disabled]="!AddTimelineForm.valid" type="submit" class="btn">Add Timeline
-                                        </button>
-                                </div>
-                            </form>
-                        </div>
-                      
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>  -->
 
 
 <div class="card">
@@ -74,7 +16,7 @@
                     </div>
                     <div class="form-row" style="margin: top -10px">
                         <div class="col">
-                            <input type="text" formControlName="timeLineName" class="form-control" placeholder="TimeLine Name">
+                            <input type="text" formControlName="name" class="form-control" placeholder="TimeLine Name">
                         </div>
                     </div>
                 </div>
@@ -92,34 +34,13 @@
                     <div class="col-md-6">
                         <button type="button" class="btn btn-primary" (click)="addTimeLines()">Add</button>&nbsp;
                     </div>
-                    <!-- <div class="col-md-6">
-                        <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
-                        </div> -->
+                
                     
                 </div>
             </div>
       
     </form>
 </div>
-    <!-- <div class="col-md-8 mt-4 mb-4">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Name</th>       
-                    <th>Messages</th>
-                     <th>Action</th> -->
-                <!-- </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let timeline of mytimelines">
-                    <td>{{timeline.timeLineName}}</td>
-                    <td>{{timeline.message}}</td> -->
-                   <!-- <td> <button type="button" class="btn btn-primary" (click)="remove()">Remove</button></td> -->
-                <!-- </tr>
-            </tbody>
-        </table>
-        
-    </div> --> 
     
 
 

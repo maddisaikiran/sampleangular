@@ -8,13 +8,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit{
   title = 'sample-project';
-  // router: any;
    ngOnInit() {
-   //   this.router.navigate(["/home"]);
    }
-
-   
-
    constructor(private router: Router){
 
    }
