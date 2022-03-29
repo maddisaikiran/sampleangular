@@ -38,10 +38,10 @@ export class UserService {
   }
 
   public updateUserStatus(id: number):Observable<User>{
-    return this.http.put<User>("http://localhost:8080/user/"+ id +"/userStatus/false",id);
+    return this.http.put<User>("http://localhost:8080/user/"+ id +"/status/false",id);
   }
   public updateUserStatuss(id: number):Observable<User>{
-    return this.http.put<User>("http://localhost:8080/user/"+ id +"/userStatus/true",id);
+    return this.http.put<User>("http://localhost:8080/user/"+ id +"/status/true",id);
   }
 
 }

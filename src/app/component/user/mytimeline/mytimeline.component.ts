@@ -15,12 +15,11 @@ export class MytimelineComponent implements OnInit {
   constructor(private service: TimelineService, private router: Router) { }
 
   ngOnInit() {
-    // if(localStorage.getItem("user")){
+   
       this.user = JSON.parse(localStorage.getItem("user"));
-      // this.service.getAllMyTimelinesById(getUserObj.id).subscribe(res => {
         this.service.getAllMyTimelinesById(this.user.id).subscribe(res => {
          this.timelines = res.data;
-        //this.users = res;
+        
       })
   
   }
