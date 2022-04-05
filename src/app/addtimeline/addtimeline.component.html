@@ -4,19 +4,16 @@
     </div>
   </div>
 
-
-
-
 <div class="card">
     <form [formGroup]="AddTimelineForm">
             <div class="form-row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>Image</label>
                     </div>
                     <div class="form-row" style="margin: top -10px">
                         <div class="col">
-                            <input type="text" formControlName="name" class="form-control" placeholder="TimeLine Name">
+                            <input type="text" formControlName="image" class="form-control" placeholder="TimeLine image">
                         </div>
                     </div>
                 </div>
@@ -30,12 +27,11 @@
                         </div>
                     </div>
                 </div>
+                &nbsp;
                 <div class="form-row" style="margin: top -10px">
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-primary" (click)="addTimeLines()">Add</button>&nbsp;
+                        <button mat-icon-button color="blue" class="btn btn-primary" (click)="addTimeLines()"><mat-icon>add</mat-icon></button>&nbsp;
                     </div>
-                
-                    
                 </div>
             </div>
       

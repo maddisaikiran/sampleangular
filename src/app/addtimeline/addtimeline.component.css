@@ -1,31 +1,3 @@
-button {
-    border-radius: 0.3rem;
-    background-color: #f26f26;
-    margin: 0.7rem 0;
-    color: #fff;
-    font-size: medium;
-    font-weight: bold;
-  }
-  
-  button:hover {
-    border-radius: 0.3rem;
-    background-color: #de580d;
-    margin: 0.7rem 0;
-    color: #fff;
-    font-size: medium;
-    font-weight: bold;
-    transition: color 0.15s ease-in, background-color 0.15s ease-in,
-      border-color 0.15s ease-in, box-shadow 0.15s ease-in;
-  }
-  
-  /* .card-header {
-    background-color: #263238;
-  }
-  
-  .card-title {
-    font-weight: bold;
-    color: white;
-  } */
 
   .box{
     width: 50%;
@@ -39,15 +11,14 @@ button {
     color: white;
     padding: 0 1rem;
     background: #f1f5f9;
-     /* text-align: center; */
+    
 } 
 .page-box {
       min-height: 70px;
       background: #1e293b;
       margin: 0 -1rem;
       font-size: 30px;
-      /* text-align: center; */
-    
+      
     }
 .my{
     text-align: center;

@@ -12,6 +12,7 @@ import { TimelineService } from '../service/timeline.service';
   styleUrls: ['./addtimeline.component.css']
 })
 export class AddtimelineComponent implements OnInit {
+
   timelines: Timeline[];
   user: User;
    timeline : Timeline;
@@ -20,7 +21,7 @@ export class AddtimelineComponent implements OnInit {
   constructor(private router: Router, private service: TimelineService) {
     this.timeline = new Timeline();
     this.AddTimelineForm = new FormGroup({
-      name: new FormControl("",[Validators.required]),
+      image: new FormControl("",[Validators.required]),
       message : new FormControl("",[Validators.required])
       
     });
@@ -33,19 +34,15 @@ export class AddtimelineComponent implements OnInit {
    })
   }
   public addTimeLines() {
-  
-    this.timeline.name = this.AddTimelineForm.value.name;
-    this.timeline.message = this.AddTimelineForm.value.message;
-    console.log(this.timeline);
-    this.service.addTimeLine(this.timeline, this.user.id).subscribe((data) =>{
-        // this.timeline.push(this.AddTimelineForm.value);
 
-      console.log(data);
+  
+    this.timeline.image = this.AddTimelineForm.value.image;
+    this.timeline.message = this.AddTimelineForm.value.message;
+    this.timeline.count = 0;
+  
+    this.service.addTimeLine(this.timeline, this.user.id).subscribe((data) =>{
     });
     alertify.success("TimeLine Added Successfully");
-
-    
-    // this.router.navigate(["/mytimeline"]);
   }
 
   

@@ -2,15 +2,13 @@
   color: white;
   padding: 0 1rem;
   background: #f1f5f9;
-   /* text-align: center; */
+  
 } 
 .page-box {
     min-height: 70px;
     background: #1e293b;
     margin: 0 -1rem;
     font-size: 30px;
-    /* text-align: center; */
-  
   }
 .my{
   text-align: center;
@@ -29,5 +27,9 @@
       left: 50%;
       transform: translate(-50%, -50%);
     }
+    .td,img{
+      height: 120px;
+      width: 200px;
+  }
     
   

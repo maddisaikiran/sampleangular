@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     
       this.user = JSON.parse(localStorage.getItem("user"));
-      // this.service.getAllMyTimelinesById(getUserObj.id).subscribe(res => {
         this.service.getAllMyTimelinesById(this.user.id).subscribe(res => {
          this.timelines = res.data;
         

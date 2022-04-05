@@ -34,6 +34,7 @@ import { NetworkComponent } from './component/user/network/network.component';
 import { ViewtimelineComponent } from './component/user/viewtimeline/viewtimeline.component';
 import { MytimelineComponent } from './component/user/mytimeline/mytimeline.component';
 import { AdmindashboardComponent } from './component/admin/admindashboard/admindashboard.component';
+import { AboutComponent } from './component/user/about/about.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { AdmindashboardComponent } from './component/admin/admindashboard/admind
     ProfilesComponent,
     HeaderComponent,
     SidenavComponent,
+    AboutComponent,
     // MatFormFieldModule,
     // MatIconModule,
   ],

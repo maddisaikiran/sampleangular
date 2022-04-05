@@ -19,9 +19,8 @@
                         <h1>Manage My TimeLine</h1>
                     </div>
                 </div>
-                <button type="button" class="btn" routerLink="/password/addtimeline"><i
-                        class="nav-icon fas fa-plus-square"></i>&nbsp;&nbsp;&nbsp;Add
-                    My TimeLine</button>
+                <button mat-icon-button routerLink="/password/addtimeline">
+                    &nbsp;&nbsp;&nbsp;<mat-icon>add_box</mat-icon></button>
             </div>
         </section>
 
@@ -41,7 +40,7 @@
                                     <thead class="thead-light">
                                         <tr>
                                            
-                                            <th>Name</th>
+                                            <th>Image</th>
                                             
                                             <th>Messages</th>
                                           
@@ -51,9 +50,9 @@
                                       
                                         <tr>
                                             
-                                            <td>{{timeline.name}}</td>
+                                            <td><img [src]="timeline.image"></td>
                                             
-                                            <td>{{timeline.message}}</td>
+                                            <td style="font-size: medium">{{timeline.message}}</td>
                                            
                                         </tr>
 

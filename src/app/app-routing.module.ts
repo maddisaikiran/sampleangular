@@ -4,6 +4,7 @@ import { AddtimelineComponent } from './addtimeline/addtimeline.component';
 import { AdminaccountComponent } from './component/admin/adminaccount/adminaccount.component';
 import { AdmindashboardComponent } from './component/admin/admindashboard/admindashboard.component';
 import { AdminloginComponent } from './component/admin/adminlogin/adminlogin.component';
+import { AboutComponent } from './component/user/about/about.component';
 import { FriendsComponent } from './component/user/friends/friends.component';
 import { HomeComponent } from './component/user/home/home.component';
 import { MytimelineComponent } from './component/user/mytimeline/mytimeline.component';
@@ -98,6 +99,10 @@ const routes: Routes = [
       {
         path: "profile",
         component: ProfileComponent
+      },
+      {
+        path: "about",
+        component: AboutComponent
       }
     ]
   }
