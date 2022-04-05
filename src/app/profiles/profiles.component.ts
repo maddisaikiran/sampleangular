@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
+import * as alertify from 'alertifyjs';
+import { User } from '../model/user';
+
 
 @Component({
   selector: 'app-profiles',
@@ -19,7 +22,10 @@ export class ProfilesComponent implements OnInit {
     admin:null,
     friend: null,
     timelines:null,
+    likes:null,
+    messages:null
   }
+  
   constructor(private service: UserService, private router: Router) { 
     this.getUsersDetails();
   }
@@ -29,25 +35,18 @@ export class ProfilesComponent implements OnInit {
         console.log(resp);
         this.userDetails = resp.data;
       },
-      (err) => {
-        console.log(err);
-      }
     );
   }
   updateUsers(){
     this.service.updateUser(this.userToUpdate).subscribe(
       (resp) => {
-        console.log(resp);
+        alertify.success("User Profile Updated")
       },
-      (err) => {
-        console.log(err);
-      }
     );
   }
   edit(studuent: any){
     this.userToUpdate = studuent;
   }
-
   ngOnInit() {
   }
 

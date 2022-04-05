@@ -22,10 +22,10 @@ export class TimelineService {
 }
 
     public getAllMyTimelines(): Observable<Timeline[]>{
-      return this.http.get<Timeline[]>("http://localhost:8080/timelines");
+      return this.http.get<Timeline[]>("http://localhost:8080/timeline");
     }
    public getAllMyTimelinesById(id: number): Observable<any> {
-     return this.http.get<any>("http://localhost:8080/timelines" + "/user/" + id);
+     return this.http.get<any>("http://localhost:8080/timeline" + "/user/" + id);
    }
 
 

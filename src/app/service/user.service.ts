@@ -17,8 +17,8 @@ export class UserService {
    public addUser(user: User): Observable<User>{
      return this.http.post<any>("http://localhost:8080/user", user).pipe(map( (res) => res.data as User));
    }
-   public loginUser(user: User): Observable<User>{
-     return this.http.post<User>("http://localhost:8080/user/login",user);
+   public loginUser(user: User): Observable<any>{
+     return this.http.post<any>("http://localhost:8080/user/login",user);
    }
 
    public updateUser(user: User): Observable<User>{
@@ -27,8 +27,8 @@ export class UserService {
    public getAllUser(): Observable<any>{
      return this.http.get<any>("http://localhost:8080/users");
   }
-  public getUserById(id: number): Observable<User>{
-    return this.http.get<User>("http://localhost:8080/user"+"/"+id);
+  public getUserById(id: number): Observable<any>{
+    return this.http.get<any>("http://localhost:8080/user/"+"user/"+id);
   }
   public deleteUser(id: number):any {
     return this.http.delete("http://localhost:8080/user"+"/"+id);

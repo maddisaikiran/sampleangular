@@ -5,12 +5,14 @@
 </div>
 <div class="container">
     <div class="mt-5">
-      <table class="table table-bordered">
+      <table class="table table-bordered" style=" width:70%; " >
         <thead>
           <tr>
             <th>Full Name</th>
             <th>Mobile</th>
             <th>Email</th>
+            <th>Sent Message</th>
+            <th>View Messages</th>
             
           </tr>
         </thead>
@@ -20,7 +22,37 @@
             <td>{{user.fullName}}</td>
             <td>{{user.mobile}}</td>
             <td>{{user.email}}</td>
-        
+        <td>
+          <form [formGroup]="messageForm">
+            <div class="form-group">
+              <textarea formControlName="message" class="form-control" placeholder="Leave a message"></textarea>
+            </div>
+            <div class="form-group">
+              
+              <button type="button" style="background-color: blue; color: aliceblue;" (click)="addSubmit(user)">Post</button>
+           
+          </div>
+          </form>
+          <br/>
+        </td>
+        <td> 
+          <div class="dropdown">
+             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                 View Messages
+             </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                
+                    <div *ngFor="let message of messages" >
+                         <div *ngIf="message.user.id == user.id"> 
+                            <div class="dropdown-item">
+                      {{message.message}}
+                            </div>
+                        </div>
+                    </div>
+                   
+                  </div>
+          </div>    
+        </td>
           </tr>
         </tbody>
       </table>

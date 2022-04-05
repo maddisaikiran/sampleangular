@@ -25,33 +25,13 @@ export class SignupComponent implements OnInit {
       userStatus: new FormControl(true, Validators.required),
       
      },
-    
-     
      );
    }
 
   ngOnInit() {
   }
-
-  // signup(){
-  //   this.service.addUser(this.user).subscribe(
-  //     data => {
-  //       this.router.navigate(['/home']);
-  //     },
-  //     error => {
-  //       this.msg="Email already exists";
-  //     }
-  //   );
-  // }
-
   signup() {
-    //this.user.fullName = this.signupform.value.name;
-    // this.user.emailId = this.signupform.value.email;
-    // this.user.mobile = this.signupform.value.mobile;
-    // this.user.password = this.signupform.value.password;
      this.user.userStatus = this.signupform.value.userStatus;
-
-    // this.user.userStatus = this.registerForm.value.userStatus;
     this.service.addUser(this.user).subscribe((data) => {
           console.log(data);
         alertify.success("User successfully created");
@@ -60,14 +40,6 @@ export class SignupComponent implements OnInit {
         error => {
           alertify.error("Registration Failed");
         }
-        
-        
-        
         );
-    
-    // localStorage.setItem("role", "user");
-
-   
-   
   }
 }

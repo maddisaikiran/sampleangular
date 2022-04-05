@@ -3,8 +3,6 @@
         <div class="my">My Timelines</div>
     </div>
   </div>
-
-
 <div class="wrapper">
    
     <div class="content-wrapper" style="min-height: 2077.69px;">
@@ -19,34 +17,67 @@
                         <div class="card">
                             
                             <div class="card-body">
-                                <table class="table table-bordered table-hover" data-widget="expandable-table"
-                                    aria-expanded="true">
+                                <table class="table table-bordered" style="width: 80%;">
                                     <thead class="thead-light">
                                         <tr>
                                            
-                                            <th>Name</th>
+                                            <th>Image</th>
                                             
                                             <th>Messages</th>
-                                          
+                                            <th>View likes</th>
+                                            <th>View Comments</th>
                                         </tr>
                                     </thead>
-                                          <tbody *ngFor="let timeline of timelines"> 
+                                          <tbody class="tbody" style="text-align: center;" > 
                                       
-                                        <tr>
+                                        <tr *ngFor="let timeline of timelines">
                                             
-                                            <td>{{timeline.name}}</td>
+                                            <td><img [src]="timeline.image"></td>
                                             
-                                            <td>{{timeline.message}}</td>
-                                           
+                                            <td style="font-size: medium">{{timeline.message}}</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                                      View User likes
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        
+                                                              <div *ngFor="let like of timeline.likes" >
+                                                                  <div *ngIf="like.timeline.timeId == timeline.timeId">
+                                                                  <div class="dropdown-item" >
+                                                                {{like.user.email}}
+                                                                </div>
+                                                                  </div>
+                                                              </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                                      View Comments
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                          
+                                                              <div *ngFor="let comment of timeline.comments" >
+                                                                  <div *ngIf="comment.timeline.timeId == timeline.timeId">
+                                                                  <div class="dropdown-item">
+                                                               
+                                                                {{comment.user.email}} &nbsp;&nbsp;
+                                                                {{comment.comment}}
+                                                              </div>
+                                                                  </div>
+                                                              </div>
+                                                             
+                                                    </div>
+                                                </div>    
+                                            </td>
                                         </tr>
-
                                     </tbody>
-                                   
-
                                 </table>
                             </div>
                           
-                            </div>
+                        </div>
                        
                     </div>
                 </div>
@@ -54,3 +85,4 @@
         </section>
     </div>
 </div>
+

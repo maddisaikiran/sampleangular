@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { User } from '../model/user';
+import { UserService } from '../service/user.service';
+import * as alertify from 'alertifyjs';
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +10,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+user: User;
+updateForm = new FormGroup({
+  fullName:new FormControl(''),
+  mobile: new FormControl(''),
+  email: new FormControl('')
+})
+constructor(private service: UserService) { 
+  
 }
+ngOnInit() {
+
+  this.user = JSON.parse(localStorage.getItem("user"));
+    console.log(this.user.id);
+    this.service.getUserById(this.user.id).subscribe(
+      (resp) => {
+        this.user.fullName = resp.data.fullName;
+        this.user.mobile = resp.data.mobile;
+        this.user.email = resp.data.email;
+        console.log(resp.data);
+      },
+    );
+}
+updateUsers(){
+  this.service.updateUser(this.user).subscribe(
+    (resp) => {
+      alertify.success("updated");
+    },
+  );
+}
+}
+
+
+

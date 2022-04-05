@@ -25,8 +25,6 @@ export class UserloginComponent implements OnInit {
     this.loginForm = new FormGroup({
       email: new FormControl("",Validators.required),
       password: new FormControl("",Validators.required),
-    // role: new FormControl(""),
-    // userStatus: new FormControl(true, Validators.required),
     });
   }
 
@@ -35,7 +33,7 @@ export class UserloginComponent implements OnInit {
   login() {
     this.userService
     .getUserByEmailIdAndPassword(this.user)
-    .subscribe(async (userData: User) => {
+    .subscribe((userData: User) => {
       this.user = userData;
       if (userData != null && this.user.userStatus == true && this.user.email == userData.email && this.user.password== userData.password) {
         localStorage.setItem("user", JSON.stringify(userData));

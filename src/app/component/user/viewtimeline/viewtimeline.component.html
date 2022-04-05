@@ -6,24 +6,49 @@
               </div> 
 <div class="container">
   <div class="mt-5">
-    <table class="table table-bordered">
+    <table style="width: 950px; height: 400px;">
       <thead>
         <tr>
           <th>Full Name</th>
           <th>Mobile</th>
-          <th>Time Line Name</th>
+          <th>Time Line Image</th>
           <th>Time Message</th>
+          <th>Like</th>
+          <th>comment</th>
         </tr>
       </thead>
       <tbody class="tbody">
         <tr *ngFor="let timeline of timelines">
           <td>{{timeline.user.fullName}}</td>
           <td>{{timeline.user.mobile}}</td>
-          <td>{{timeline.name}}</td>
+          <td><img [src]="timeline.image"></td>
           <td>{{timeline.message}}</td>
+          <td>
+          <div><button mat-icon-button color="primary" (click)="addTimelineToLike(timeline)"> 
+            <mat-icon>thumb_up_alt</mat-icon></button>
+                                     
+          </div>
+          </td>
+          <td>
+            <form [formGroup]="commentForm">
+              <div class="form-group">
+                <textarea formControlName="comment" class="form-control" placeholder="Leave a comment"></textarea>
+              </div>
+              <div class="form-group">
+                
+                <button type="button" style="background-color: blue; color: aliceblue;" (click)="addSubmit(timeline)">Post</button>
+             
+            </div>
+            </form>
+            <br/>
+          </td>
         </tr>
         
       </tbody>
+     
     </table>
+   
   </div>
 </div>
+
+

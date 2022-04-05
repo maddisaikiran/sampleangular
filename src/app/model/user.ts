@@ -1,4 +1,7 @@
 import { Friend } from "./friend";
+import { Liked } from "./liked";
+import { Message } from "./message";
+
 import { Timeline } from "./timeline";
 
 export class User {
@@ -8,7 +11,8 @@ export class User {
     email:string;
     password:string;
     userStatus:boolean;
-    //admin: Admin;
     friend: Friend;
     timelines: Timeline[];
+    likes: Liked[];
+    messages: Message[];
 }

@@ -25,11 +25,7 @@ export class NetworkComponent implements OnInit {
 private getUserFriends(){
   this.service.getFriendsByUserId(this.loggedInUser.id).subscribe((resp) => {
     this.userDetails = resp.data;
-    //this.userDetails = resp.filter(user => user.id !==this.loggedInUser.id);
   },
-  (err) => {
-    console.log(err);
-  }
   );
 }
 
@@ -47,9 +43,6 @@ newRequest.statusCode=statusCode;
 this.service.createRequest(newRequest).subscribe((resp) => {
 this.getUserFriends();
 },
-(err) => {
-console.log(err);
-}
 );
 
 }

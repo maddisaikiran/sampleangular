@@ -1,10 +1,14 @@
 import { Friend } from "./friend";
+import { Liked } from "./liked";
+
 import { User } from "./user";
 
 export class Timeline {
-    id: number;
-    name: String;
+    timeId: number;
+    image: String;
     message: String;
     user: User;
-  
+    likes: Liked[];
+    count: number;
+    comments: Comment[];
 }
