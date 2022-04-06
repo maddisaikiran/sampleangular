@@ -25,7 +25,7 @@ messages: Message[];
     this.loggedInUser= JSON.parse(localStorage.getItem("user"));
     this.getUserFriends();
     this.messageService.getMessagesByUserId(this.loggedInUser.id).subscribe(res=>{
-this.messages = res;
+this.messages = res.data;
 console.log(this.messages);
 console.log(this.loggedInUser.id);
     })

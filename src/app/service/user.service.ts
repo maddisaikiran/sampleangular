@@ -28,7 +28,7 @@ export class UserService {
      return this.http.get<any>("http://localhost:8080/users");
   }
   public getUserById(id: number): Observable<any>{
-    return this.http.get<any>("http://localhost:8080/user/"+"user/"+id);
+    return this.http.get<any>("http://localhost:8080/user/"+id);
   }
   public deleteUser(id: number):any {
     return this.http.delete("http://localhost:8080/user"+"/"+id);

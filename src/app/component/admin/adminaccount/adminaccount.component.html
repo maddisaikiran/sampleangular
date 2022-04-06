@@ -1,7 +1,7 @@
 
-    <div class="back">
-        <button type="reset" routerLink="/admindashboard">Back</button>
-                    </div>
+  
+        <button type="reset" class="btn btn-primary" routerLink="/admindashboard"><mat-icon>undo</mat-icon></button>
+                 
 <div class="search-user">
         <input class="form-control" [(ngModel)]="searchText" placeholder="Search" autocomplete="off">
    
@@ -50,15 +50,13 @@
                                                 </td>
                                                 <td class="text-center">
                                                     <div *ngIf="user.userStatus">
-                                                    <button type="button" class="btn" (click)="update(user)"><i
-                                                            class="fas fa-user-edit"></i>&nbsp;&nbsp;active</button>
+                                                    <button type="button" class="btn btn-primary" (click)="update(user)"><mat-icon>done</mat-icon></button>
                                                         </div>
                                                     &nbsp;&nbsp;
                                                     &nbsp;
                                                     <div *ngIf="!user.userStatus">
-                                                         <button type="button" class="btn "
-                                                        (click)="delete(user)"><i
-                                                            class="fas fa-trash-alt"></i>&nbsp;&nbsp;disactive</button>
+                                                         <button type="button" class="btn btn-primary"
+                                                        (click)="delete(user)"><mat-icon>block</mat-icon></button>
                                                     </div>
                                                 </td>
                                             </tr>
