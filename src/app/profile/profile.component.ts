@@ -22,13 +22,11 @@ constructor(private service: UserService) {
 ngOnInit() {
 
   this.user = JSON.parse(localStorage.getItem("user"));
-    console.log(this.user.id);
     this.service.getUserById(this.user.id).subscribe(
       (resp) => {
         this.user.fullName = resp.data.fullName;
         this.user.mobile = resp.data.mobile;
         this.user.email = resp.data.email;
-        console.log(resp.data);
       },
     );
 }

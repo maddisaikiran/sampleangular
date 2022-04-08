@@ -26,8 +26,6 @@ messages: Message[];
     this.getUserFriends();
     this.messageService.getMessagesByUserId(this.loggedInUser.id).subscribe(res=>{
 this.messages = res.data;
-console.log(this.messages);
-console.log(this.loggedInUser.id);
     })
   }
   createForm(){
@@ -48,13 +46,8 @@ console.log(this.loggedInUser.id);
   }    
   private getUserFriends(){
     this.service.getUserByFriendByOrderStatusById(this.loggedInUser.id).subscribe((resp) => {
-      // this.users = resp.filter(user => user.id !==this.loggedInUser.id);
       this.users=resp.data;
-      console.log(this.users);
     },
-    (err) => {
-      console.log(err);
-    }
     );
 }
 

@@ -32,7 +32,6 @@ export class ProfilesComponent implements OnInit {
   getUsersDetails() {
     this.service.getAllUser().subscribe(
       (resp) => {
-        console.log(resp);
         this.userDetails = resp.data;
       },
     );
