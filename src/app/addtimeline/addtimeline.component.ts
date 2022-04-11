@@ -38,7 +38,6 @@ export class AddtimelineComponent implements OnInit {
   
     this.timeline.image = this.AddTimelineForm.value.image;
     this.timeline.message = this.AddTimelineForm.value.message;
-    this.timeline.count = 0;
   
     this.service.addTimeLine(this.timeline, this.user.id).subscribe((data) =>{
     });

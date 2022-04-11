@@ -31,11 +31,13 @@
           <td><img [src]="timeline.image"></td>
           <td>{{timeline.message}}</td>
           <td>
-          <div><button mat-icon-button color="primary" (click)="addTimelineToLike(timeline)"> 
+          <div>
+            <button mat-icon-button color="primary" (click)="addTimelineToLike(timeline)"> 
             <mat-icon>thumb_up_alt</mat-icon></button>
-                                     
+                            
           </div>
           </td>
+          
           <td>
             <form [formGroup]="commentForm">
               <div class="form-group">
@@ -60,6 +62,8 @@
                   </section>
   </div>
 </div>
+
+
 
 
 

@@ -1,4 +1,3 @@
-import { Friend } from "./friend";
 import { Liked } from "./liked";
 
 import { User } from "./user";
@@ -9,6 +8,5 @@ export class Timeline {
     message: String;
     user: User;
     likes: Liked[];
-    count: number;
     comments: Comment[];
 }

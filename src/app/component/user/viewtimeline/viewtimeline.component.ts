@@ -51,6 +51,7 @@ this.commentService.createComment(this.comments).subscribe(res=>{
 
      newlike.user = this.loggedInUser;
      newlike.timeline = userLike;
+
     this.likeService.createLike(newlike).subscribe((res)=>{
            alertify.success("like added");
     },
