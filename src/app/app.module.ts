@@ -22,8 +22,6 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
-
-import * as Material from "@angular/material";
 import { ProfilesComponent } from './profiles/profiles.component';
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './header/header.component';
@@ -58,8 +56,7 @@ import { AboutComponent } from './component/user/about/about.component';
     HeaderComponent,
     SidenavComponent,
     AboutComponent,
-    // MatFormFieldModule,
-    // MatIconModule,
+    
   ],
   imports: [
     BrowserModule,

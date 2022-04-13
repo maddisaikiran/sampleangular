@@ -33,7 +33,9 @@ public getUserByFriendByTimelineById(userId: number): Observable<any> {
   return this.http.get<any>("http://localhost:8080/timeline"+"/friend/"+userId);
 }
 
-
+public deleteTimeline(timeId: number): Observable<Timeline>{
+  return this.http.delete<Timeline>("http://localhost:8080/timeline/"+timeId);
+}
 
 
 }

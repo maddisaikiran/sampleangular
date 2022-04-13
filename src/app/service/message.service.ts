@@ -15,7 +15,11 @@ export class MessageService {
     return this.http.post<Message>("http://localhost:8080/message",newMessage);
   }
 
-  public getMessagesByUserId(friendId: number): Observable<any>{
-    return this.http.get<any>("http://localhost:8080/message/"+friendId);
+  public getMessagesByFriendId(friendId: number): Observable<any>{
+    return this.http.get<any>("http://localhost:8080/message/friend/"+friendId);
   }
+  public getMessagesByUserId(userId: number): Observable<any>{
+    return this.http.get<any>("http://localhost:8080/message/user/"+userId);
+  }
+
 }

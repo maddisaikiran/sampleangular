@@ -7,6 +7,7 @@ import { User } from 'src/app/model/user';
 import { CommentService } from 'src/app/service/comment.service';
 import { LikeService } from 'src/app/service/like.service';
 import { TimelineService } from 'src/app/service/timeline.service';
+import * as alertify from 'alertifyjs';
 
 @Component({
   selector: 'app-mytimeline',
@@ -18,6 +19,8 @@ export class MytimelineComponent implements OnInit {
   user: User;
   likes: Liked[];
    comments: Comment[];
+   timeline:Timeline;
+   count: number;
 
 
   constructor(private service: TimelineService, private router: Router, private likedService: LikeService, private commentService: CommentService) { 
@@ -28,18 +31,37 @@ export class MytimelineComponent implements OnInit {
       this.user = JSON.parse(localStorage.getItem("user"));
         this.service.getAllMyTimelinesById(this.user.id).subscribe(resp => {
          this.timelines = resp.data;
-
-         if(this.timelines.length > 0) {
-            for (let i in this.timelines) {
-              this.likedService.getUserLikesByMessageById(this.timelines[i].timeId).subscribe(res =>{
-                this.timelines[i].likes = res.data; 
-              });
-              this.commentService.getCommentsByMessageId(this.timelines[i].timeId).subscribe(res =>{
-                this.timelines[i].comments = res.data;
-            });
-              
-          }}
   })
+  
+}
+getlikes(){
+  if(this.timelines.length > 0){
+    for (let i in this.timelines) {
+      this.likedService.getUserLikesByMessageById(this.timelines[i].timeId).subscribe(res =>{
+        this.timelines[i].likes = res.data; 
+        console.log(this.timelines[i].likes.length);
+        this.count = this.timelines[i].likes.length;
+      });
+    }
+  }
+}
+getcomments(){
+  if(this.timelines.length > 0){
+    for (let i in this.timelines) {
+      this.commentService.getCommentsByMessageId(this.timelines[i].timeId).subscribe(res =>{
+        this.timelines[i].comments = res.data;
+      });
+    }
+  }
+}
+
+delete(timeId: number){
+  this.service.deleteTimeline(timeId).subscribe(result => {
+    alertify.success("deleted successfully");
+    this.ngOnInit();
+  });
+    
+
 }
   
   }

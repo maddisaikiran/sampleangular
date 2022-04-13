@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as alertify from 'alertifyjs';
+import { Observable } from 'rxjs';
+import { ComponentCanDeactivate } from '../component-can-deactivate';
 import { Timeline } from '../model/timeline';
 import { User } from '../model/user';
 import { TimelineService } from '../service/timeline.service';
@@ -11,7 +13,14 @@ import { TimelineService } from '../service/timeline.service';
   templateUrl: './addtimeline.component.html',
   styleUrls: ['./addtimeline.component.css']
 })
-export class AddtimelineComponent implements OnInit {
+export class AddtimelineComponent implements OnInit, ComponentCanDeactivate {
+ canLeave(): boolean{
+if(this.AddTimelineForm.dirty){
+  return window.confirm("You have some unsaved changes. Save it before leaving");
+}
+return true;
+ }
+
 
   timelines: Timeline[];
   user: User;
@@ -27,6 +36,7 @@ export class AddtimelineComponent implements OnInit {
     });
    }
  
+ 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("user"));
     this.service.getAllMyTimelinesById(this.user.id).subscribe(res => {
@@ -40,6 +50,7 @@ export class AddtimelineComponent implements OnInit {
     this.timeline.message = this.AddTimelineForm.value.message;
   
     this.service.addTimeLine(this.timeline, this.user.id).subscribe((data) =>{
+      this.AddTimelineForm.reset({});
     });
     alertify.success("TimeLine Added Successfully");
   }

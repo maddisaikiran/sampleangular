@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Timeline } from 'src/app/model/timeline';
 import { User } from 'src/app/model/user';
 import { TimelineService } from 'src/app/service/timeline.service';
+import * as alertify from 'alertifyjs';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,15 @@ export class HomeComponent implements OnInit {
         
       })
    
+  }
+  delete(timeId: number){
+    this.service.deleteTimeline(timeId).subscribe(result => {
+      alertify.success("deleted successfully");
+      this.ngOnInit();
+    });
+    
+     
+  
   }
 
 }

@@ -9,18 +9,29 @@ import { Liked } from 'src/app/model/liked';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommentService } from 'src/app/service/comment.service';
 import { Comment } from 'src/app/model/comment';
+import { ComponentCanDeactivate } from 'src/app/component-can-deactivate';
 
 @Component({
   selector: 'app-viewtimeline',
   templateUrl: './viewtimeline.component.html',
   styleUrls: ['./viewtimeline.component.css']
 })
-export class ViewtimelineComponent implements OnInit {
+export class ViewtimelineComponent implements OnInit, ComponentCanDeactivate {
+  canLeave(): boolean{
+    if(this.commentForm.dirty){
+      return window.confirm("You have some unsaved changes. Are you sure you want to navigate?");
+    }
+    return true;
+     }
   commentForm: FormGroup;
 timelines: Timeline[];
 users: User[];
 loggedInUser: User;
+commentList: Comment[];
 comments: Comment;
+likes: Liked[];
+count: number;
+timeline: Timeline;
   constructor(private service: TimelineService, private likeService: LikeService, private formBuilder: FormBuilder, private commentService: CommentService) { 
   }
 
@@ -44,6 +55,7 @@ this.comments.timeline = userComment;
    
 this.commentService.createComment(this.comments).subscribe(res=>{
   alertify.success("comment added");   
+  this.commentForm.reset({});
 })
   }
   addTimelineToLike(userLike : Timeline){
@@ -51,21 +63,39 @@ this.commentService.createComment(this.comments).subscribe(res=>{
 
      newlike.user = this.loggedInUser;
      newlike.timeline = userLike;
-
+  
     this.likeService.createLike(newlike).subscribe((res)=>{
+      
            alertify.success("like added");
+
     },
     error => {
       alertify.error("only 1 like added for each timeline");
     }
     
     )
-  }
+  } 
   private getUserFriendsTimelines(){
     this.service.getUserByFriendByTimelineById(this.loggedInUser.id).subscribe((resp) => {
       this.timelines=resp.data;
+      if(this.timelines.length> 0){
+        for(let i in this.timelines){
+          this.likeService.getUserLikesByMessageById(this.timelines[i].timeId).subscribe((res) => {
+                 this.timelines[i].likes = res.data;
+               //  this.timelines[i].likes.length = res.data.length;
+                 console.log(this.timelines[i].likes.length);
+                 
+                 this.count = res.data.length;
+
+               });
+               this.commentService.getCommentsByMessageId(this.timelines[i].timeId).subscribe(res =>{
+                this.timelines[i].comments = res.data;
+               // console.log(this.timelines[i].comments.length);
+              });
+        }
+      }
+      
     },
       );
-
     }
 }

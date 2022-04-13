@@ -19,10 +19,13 @@
     border-color: white;
   }
   .mat-list-item {
-    color: #94a3b8 !important;
+    color: #f7f9fc !important;
     font-size: 20px;
     height: 44px;
     margin-bottom: 4px;
+  }
+  .mat-list-item:hover{
+    background: blue;
   }
   
   .mat-list-item-content {
@@ -31,7 +34,7 @@
   }
     
     ::ng-deep {
-        background: #2c3344 !important;
+        background: #0950f3 !important;
     }
   
   .mat-subheader {
@@ -39,4 +42,7 @@
     font-size: 0.6rem;
     font-weight: 100;
     letter-spacing: 1px;
+  }
+  .list-item-active{
+    background: #0950f3 !important;
   }

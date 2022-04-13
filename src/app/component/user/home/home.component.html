@@ -19,7 +19,7 @@
                         <h1>Manage My TimeLine</h1>
                     </div>
                 </div>
-                <button mat-icon-button routerLink="/password/addtimeline">
+                <button title="Add Timeline" mat-icon-button routerLink="/password/addtimeline">
                     &nbsp;&nbsp;&nbsp;<mat-icon>add_box</mat-icon></button>
             </div>
         </section>
@@ -43,6 +43,7 @@
                                             <th>Image</th>
                                             
                                             <th>Messages</th>
+                                            <th>delete</th>
                                           
                                         </tr>
                                     </thead>
@@ -53,6 +54,10 @@
                                             <td><img [src]="timeline.image"></td>
                                             
                                             <td style="font-size: medium">{{timeline.message}}</td>
+                                            <td>
+                                                <a (click)="delete(timeline.timeId)" class="pointer" style="color: red;"><mat-icon>delete</mat-icon></a>
+                                                
+                                            </td>
                                            
                                         </tr>
 

@@ -10,6 +10,7 @@ import { FriendService } from 'src/app/service/friend.service';
   styleUrls: ['./network.component.css']
 })
 export class NetworkComponent implements OnInit {
+  searchText : any;
   userDetails : User[];
   loggedInUser: User;
  

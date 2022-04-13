@@ -5,6 +5,7 @@ import { User } from 'src/app/model/user';
 import { FriendService } from 'src/app/service/friend.service';
 import { MessageService } from 'src/app/service/message.service';
 import * as alertify from 'alertifyjs';
+import { ComponentCanDeactivate } from 'src/app/component-can-deactivate';
 
 
 @Component({
@@ -12,22 +13,39 @@ import * as alertify from 'alertifyjs';
   templateUrl: './friends.component.html',
   styleUrls: ['./friends.component.css']
 })
-export class FriendsComponent implements OnInit {
+export class FriendsComponent implements OnInit, ComponentCanDeactivate{
+  canLeave(): boolean{
+    if(this.messageForm.dirty){
+      return window.confirm("You have some unsaved changes. Are you sure you want to navigate?");
+    }
+    return true;
+     }
   messageForm: FormGroup;
 users : User[];
 loggedInUser: User;
 messagesList: Message;
+messageList: Message[];
 messages: Message[];
+
+
   constructor(private service : FriendService,private formBuilder: FormBuilder,private messageService: MessageService) { }
 
   ngOnInit() {
     this.createForm();
     this.loggedInUser= JSON.parse(localStorage.getItem("user"));
     this.getUserFriends();
-    this.messageService.getMessagesByUserId(this.loggedInUser.id).subscribe(res=>{
+    this.messageService.getMessagesByFriendId(this.loggedInUser.id).subscribe(res=>{
 this.messages = res.data;
-    })
+console.log(this.messages);
+    });
   }
+  getMyMessages(){
+    this.messageService.getMessagesByUserId(this.loggedInUser.id).subscribe(res=>{
+      this.messageList = res.data;
+          });
+  }
+
+
   createForm(){
     this.messagesList = new Message();
     this.messageForm = this.formBuilder.group({
@@ -42,6 +60,7 @@ this.messages = res.data;
 
     this.messageService.createMessage(this.messagesList).subscribe(res =>{
                alertify.success("message sent successfully");
+               this.messageForm.reset({});
     })
   }    
   private getUserFriends(){

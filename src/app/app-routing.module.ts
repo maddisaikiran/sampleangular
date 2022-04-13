@@ -17,6 +17,7 @@ import { PasswordComponent } from './password/password.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { AuthGuard } from './shared/auth.guard';
+import { UnsavedCheckGuard } from './shared/unsaved-check.guard';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { SignupComponent } from './signup/signup.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
@@ -32,7 +33,8 @@ const routes: Routes = [
   },
   {
     path: "signup",
-    component: SignupComponent
+    component: SignupComponent,
+    data:{title: "Sign up Page"}
   },
   {
     path: "adminaccount",
@@ -44,12 +46,14 @@ const routes: Routes = [
   },
   {
     path: "userlogin",
-    component: UserloginComponent
+    component: UserloginComponent,
+    data:{title: "Login Page"}
   },
   
   {
     path: "landingpage",
     component: LandingpageComponent
+    
   },
   {
     path:"admindashboard",
@@ -74,35 +78,47 @@ const routes: Routes = [
     children:[
       {
           path: "home",
-          component: HomeComponent
+          component: HomeComponent,
+          data:{title: "home"}
       },
       {
         path:"network",
-        component:NetworkComponent
+        component:NetworkComponent,
+        data:{title: "Add Friends"}
       },
       {
         path:"friends",
-        component:FriendsComponent
+        component:FriendsComponent,
+        canDeactivate:[UnsavedCheckGuard],
+        data:{title: "List of Friends"}
       },
       {
         path:"addtimeline",
-        component:AddtimelineComponent
+        component:AddtimelineComponent,
+        canDeactivate:[UnsavedCheckGuard],
+        data:{title: "Add Timeline"}
       },
       {
         path:"viewtimeline",
-        component:ViewtimelineComponent
+        component:ViewtimelineComponent,
+        canDeactivate:[UnsavedCheckGuard],
+        data:{title: "View Friends Timeline"}
       },
       {
         path:"mytimeline",
-        component:MytimelineComponent
+        component:MytimelineComponent,
+        data:{title: "View My Timeline"}
       },
       {
         path: "profile",
-        component: ProfileComponent
+        component: ProfileComponent,
+        canDeactivate:[UnsavedCheckGuard],
+        data:{title: "Edit Profile"}
       },
       {
         path: "about",
-        component: AboutComponent
+        component: AboutComponent,
+        data:{title: "Profile"}
       }
     ]
   }

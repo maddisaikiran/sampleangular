@@ -26,6 +26,7 @@
                                             <th>Messages</th>
                                             <th>View likes</th>
                                             <th>View Comments</th>
+                                            <th>Delete Timeline</th>
                                         </tr>
                                     </thead>
                                           <tbody class="tbody" style="text-align: center;" > 
@@ -36,8 +37,9 @@
                                             
                                             <td style="font-size: medium">{{timeline.message}}</td>
                                             <td>
+                                             
                                                 <div class="dropdown">
-                                                    <button class="btn btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                                    <button class="btn btn-primary" type="button" (click)="getlikes()" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                                                         <span class="material-icons">thumb_up</span>
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -45,7 +47,7 @@
                                                               <div *ngFor="let like of timeline.likes" >
                                                                   <div *ngIf="like.timeline.timeId == timeline.timeId">
                                                                   <div class="dropdown-item" >
-                                                                {{like.user.email}}
+                                                               <div style="color: blue; font-size: 20px;">{{like.user.email}}</div> 
                                                                 </div>
                                                                   </div>
                                                               </div>
@@ -54,7 +56,7 @@
                                             </td>
                                             <td>
                                                 <div class="dropdown">
-                                                    <button class="btn btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                                    <button class="btn btn-primary" type="button" (click)="getcomments()" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                                                         <mat-icon>message</mat-icon>
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -62,15 +64,22 @@
                                                               <div *ngFor="let comment of timeline.comments" >
                                                                   <div *ngIf="comment.timeline.timeId == timeline.timeId">
                                                                   <div class="dropdown-item">
-                                                               
+                                                               <div style="color: blue; font-size: 15px;">
                                                                 {{comment.user.email}} &nbsp;&nbsp;
+                                                                <div style="position:relative; ">
                                                                 {{comment.comment}}
+                                                                </div>
+                                                               </div>
                                                               </div>
                                                                   </div>
                                                               </div>
                                                              
                                                     </div>
                                                 </div>    
+                                            </td>
+                                            <td>
+                                                <a (click)="delete(timeline.timeId)" class="pointer" style="color: red;"><mat-icon>delete</mat-icon></a>
+                                                
                                             </td>
                                         </tr>
                                     </tbody>

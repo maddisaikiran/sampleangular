@@ -16,7 +16,8 @@
             <th>Mobile</th>
             <th>Email</th>
             <th>Sent Message</th>
-            <th>View Messages</th>
+           <th>View My Messages</th>
+            <th>View Friend Messages</th>
             
           </tr>
         </thead>
@@ -39,6 +40,23 @@
           </form>
           <br/>
         </td>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-primary" (click)="getMyMessages()" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+              <mat-icon> comment </mat-icon>
+             </button>
+             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div *ngFor="let message of messageList" >
+                
+                <div *ngIf="message.friend.id == user.id"> 
+                 
+                    {{message.message}}
+                  
+                </div>
+              </div>
+             </div>
+          </div>
+        </td>
         <td> 
           <div class="dropdown">
              <button class="btn btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
@@ -49,7 +67,10 @@
                     <div *ngFor="let message of messages" >
                          <div *ngIf="message.user.id == user.id"> 
                             <div class="dropdown-item">
-                      {{message.message}}
+                              <div style="color: blue; font-size: 15px;">
+                                {{message.message}}
+                              </div>
+                      
                             </div>
                         </div>
                     </div>

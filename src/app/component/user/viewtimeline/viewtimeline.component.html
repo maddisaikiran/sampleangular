@@ -30,15 +30,15 @@
           <td>{{timeline.user.mobile}}</td>
           <td><img [src]="timeline.image"></td>
           <td>{{timeline.message}}</td>
-          <td>
-          <div>
-            <button mat-icon-button color="primary" (click)="addTimelineToLike(timeline)"> 
+          <td>    
+         
+                {{timeline?.likes?.length}}
+              
+          <button mat-icon-button color="primary" (click)="addTimelineToLike(timeline)"> 
             <mat-icon>thumb_up_alt</mat-icon></button>
-                            
-          </div>
           </td>
-          
           <td>
+              {{timeline?.comments?.length}}
             <form [formGroup]="commentForm">
               <div class="form-group">
                 <textarea formControlName="comment" class="form-control" placeholder="Leave a comment"></textarea>
@@ -48,8 +48,10 @@
                 <button type="button" style="background-color: blue; color: aliceblue;" (click)="addSubmit(timeline)">Post</button>
              
             </div>
+           
             </form>
-            <br/>
+           
+            
           </td>
         </tr>
         

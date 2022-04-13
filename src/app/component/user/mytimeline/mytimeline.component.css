@@ -4,6 +4,9 @@
     background: #f1f5f9;
    
 } 
+.pointer{
+    cursor: pointer;
+}
 .page-box {
       min-height: 70px;
       background: #1e293b;

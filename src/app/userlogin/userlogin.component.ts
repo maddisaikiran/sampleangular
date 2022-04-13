@@ -38,7 +38,7 @@ export class UserloginComponent implements OnInit {
       if (userData != null && this.user.userStatus == true && this.user.email == userData.email && this.user.password== userData.password) {
         localStorage.setItem("user", JSON.stringify(userData));
         localStorage.setItem("name",this.user.fullName);
-        alertify.success("User login successfully goes to dashboard")
+        alertify.success("User login successfully goes to dashboard",Date())
         this.router.navigate(["/password/home"]);
       }
       else{
