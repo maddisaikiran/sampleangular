@@ -19,8 +19,6 @@ export class AdminaccountComponent implements OnInit {
     });
   }
 
-  
-
   update(users: User){
     
     this.service.updateUserStatusDisactive(users.id).subscribe((res) => {
