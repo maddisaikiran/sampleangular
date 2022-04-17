@@ -7,7 +7,7 @@ import { UserService } from 'src/app/service/user.service';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent {
   user: User;
   constructor(private userService: UserService) {
     this.user = JSON.parse(localStorage.getItem("user"));
@@ -16,14 +16,10 @@ export class AboutComponent implements OnInit {
    getUsersDetails() {
     this.userService.getUserById(this.user.id).subscribe(
       (resp) => {
-  
         this.user.fullName = resp.data.fullName;
         this.user.mobile = resp.data.mobile;
         this.user.email = resp.data.email;
       },
     );
-  }
-
-  ngOnInit() {
-  }
+   }
 }

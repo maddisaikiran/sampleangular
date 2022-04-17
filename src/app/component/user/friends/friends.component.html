@@ -49,9 +49,11 @@
               <div *ngFor="let message of messageList" >
                 
                 <div *ngIf="message.friend.id == user.id"> 
-                 
+                  <div class="dropdown-item">
+                    <div style="color: blue; font-size: 15px;">
                     {{message.message}}
-                  
+                    </div>
+                  </div>
                 </div>
               </div>
              </div>

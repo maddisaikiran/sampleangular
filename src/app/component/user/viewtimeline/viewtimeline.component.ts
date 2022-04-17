@@ -23,14 +23,12 @@ export class ViewtimelineComponent implements OnInit, ComponentCanDeactivate {
     }
     return true;
      }
-  commentForm: FormGroup;
+ commentForm: FormGroup;
 timelines: Timeline[];
 users: User[];
 loggedInUser: User;
-commentList: Comment[];
 comments: Comment;
 likes: Liked[];
-count: number;
 timeline: Timeline;
   constructor(private service: TimelineService, private likeService: LikeService, private formBuilder: FormBuilder, private commentService: CommentService) { 
   }
@@ -39,6 +37,8 @@ timeline: Timeline;
     this.createForm();
     this.loggedInUser= JSON.parse(localStorage.getItem("user"));
     this.getUserFriendsTimelines();
+    
+   
   }
   createForm() {
     this.comments = new Comment();
@@ -56,23 +56,21 @@ this.comments.timeline = userComment;
 this.commentService.createComment(this.comments).subscribe(res=>{
   alertify.success("comment added");   
   this.commentForm.reset({});
+  this.getUserFriendsTimelines();
 })
   }
+
   addTimelineToLike(userLike : Timeline){
      let newlike: Liked = new Liked();
-
      newlike.user = this.loggedInUser;
      newlike.timeline = userLike;
-  
-    this.likeService.createLike(newlike).subscribe((res)=>{
-      
+    this.likeService.createLike(newlike).subscribe((res)=>{    
            alertify.success("like added");
-
+           this.getUserFriendsTimelines();
     },
     error => {
       alertify.error("only 1 like added for each timeline");
-    }
-    
+    } 
     )
   } 
   private getUserFriendsTimelines(){
@@ -81,20 +79,13 @@ this.commentService.createComment(this.comments).subscribe(res=>{
       if(this.timelines.length> 0){
         for(let i in this.timelines){
           this.likeService.getUserLikesByMessageById(this.timelines[i].timeId).subscribe((res) => {
-                 this.timelines[i].likes = res.data;
-               //  this.timelines[i].likes.length = res.data.length;
-                 console.log(this.timelines[i].likes.length);
-                 
-                 this.count = res.data.length;
-
+                 this.timelines[i].likes = res.data;               
                });
                this.commentService.getCommentsByMessageId(this.timelines[i].timeId).subscribe(res =>{
-                this.timelines[i].comments = res.data;
-               // console.log(this.timelines[i].comments.length);
+                this.timelines[i].comments = res.data;          
               });
         }
-      }
-      
+      } 
     },
       );
     }

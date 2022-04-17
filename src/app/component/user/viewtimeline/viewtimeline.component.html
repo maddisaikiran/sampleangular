@@ -13,7 +13,7 @@
                     <div class="container-fluid">
                       <div class="row">
                           <div class="col-md-12">
-                                    <table style="width: 80%;">
+                                    <table class="table table-bordered" style="width: 90%;">
                                       <thead class="thead-light">
         <tr>
           <th>Full Name</th>
@@ -38,7 +38,7 @@
             <mat-icon>thumb_up_alt</mat-icon></button>
           </td>
           <td>
-              {{timeline?.comments?.length}}
+              {{timeline?.comments?.length || '0' }}
             <form [formGroup]="commentForm">
               <div class="form-group">
                 <textarea formControlName="comment" class="form-control" placeholder="Leave a comment"></textarea>

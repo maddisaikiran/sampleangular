@@ -23,17 +23,14 @@ export class AdminaccountComponent implements OnInit {
 
   update(users: User){
     
-    this.service.updateUserStatus(users.id).subscribe((res) => {
-    
-    console.log(res);
+    this.service.updateUserStatusDisactive(users.id).subscribe((res) => {
       this.ngOnInit();
     })
 
   }
   delete(user: User){
 
-    this.service.updateUserStatuss(user.id).subscribe((res) => {
-      console.log(res);
+    this.service.updateUserStatusActive(user.id).subscribe((res) => {
       this.ngOnInit();
     })
     

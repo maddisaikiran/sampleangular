@@ -11,9 +11,6 @@ import { AdminaccountComponent } from './component/admin/adminaccount/adminaccou
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserloginComponent } from './userlogin/userlogin.component';
-
-import { UserStatusPipe } from './user-status.pipe';
-
 import { FriendsComponent } from './component/user/friends/friends.component';
 
 import { AddtimelineComponent } from './addtimeline/addtimeline.component';
@@ -33,6 +30,7 @@ import { ViewtimelineComponent } from './component/user/viewtimeline/viewtimelin
 import { MytimelineComponent } from './component/user/mytimeline/mytimeline.component';
 import { AdmindashboardComponent } from './component/admin/admindashboard/admindashboard.component';
 import { AboutComponent } from './component/user/about/about.component';
+import { UserStatusPipe } from './user-status.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +42,6 @@ import { AboutComponent } from './component/user/about/about.component';
     AdminaccountComponent,
     AdminloginComponent,
     UserloginComponent,
-    UserStatusPipe,
     NetworkComponent,
     FriendsComponent,
     AddtimelineComponent,
@@ -56,6 +53,7 @@ import { AboutComponent } from './component/user/about/about.component';
     HeaderComponent,
     SidenavComponent,
     AboutComponent,
+    UserStatusPipe,
     
   ],
   imports: [
@@ -65,12 +63,8 @@ import { AboutComponent } from './component/user/about/about.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule, 
-  
-    
     Ng2SearchPipeModule,
     MaterialModule
-    
-  
 
   ],
   providers: [],
