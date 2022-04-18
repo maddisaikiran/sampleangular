@@ -1,0 +1,59 @@
+<div class="container-fluid page">
+  <div class="page-box">
+      <div class="my">Add Friends</div>
+  </div>
+</div> 
+<div class="search-user">
+  <input class="form-control" [(ngModel)]="searchText" style="color: blue;" placeholder="Search" autocomplete="off">
+</div>
+<div class="container">
+    <div class="mt-5">
+      <table class="table table-bordered" style="width: 1000px; height: 400px;">
+        <thead>
+          <tr>
+            <th>Full Name</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th colspan="2">Action</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr *ngFor="let user of userDetails | filter:searchText">
+            <td>{{user.fullName}}</td>
+            <td>{{user.mobile}}</td>
+            <td>{{user.email}}</td>
+            <td>
+               <div *ngIf="!user.friend || (!checkIsFriend(user?.id,user?.friend,'pending') && !checkIsFriend(user?.id,user?.friend,'reject') && !checkIsFriend(user?.id,user?.friend,'accept'))">
+                    <button title="Add as Friend" mat-icon-button color="primary" (click)="sendFriendRequest(user,'Pending')">
+                      <mat-icon>person_add</mat-icon></button> 
+                </div>
+                <div *ngIf="checkIsFriend(user?.id,user?.friend,'pending')">
+                    <button title="Request Pending" mat-icon-button color="primary" disabled><mat-icon>group</mat-icon></button>
+                </div>
+               <div *ngIf="checkIsFriend(user?.id,user?.friend,'reject')">
+                    <button title="Request Closed" mat-icon-button color="warning" disabled><mat-icon>close</mat-icon></button>
+                </div>
+                <div *ngIf="checkIsFriend(user?.id,user?.friend,'accept')">
+                  <button title="friends" mat-icon-button color="primary" disabled><mat-icon style="color: blue;">group</mat-icon></button>
+                </div>
+          </td>
+          <td>
+            <div *ngIf="user?.friend?.friendId===loggedInUser.id && user?.friend?.status==='pending'">
+              <button mat-icon-button color="primary" (click)="sendFriendRequest(user,'Accept')">
+                <mat-icon>done</mat-icon></button>
+            </div>
+            <div *ngIf="user?.friend?.friendId===loggedInUser.id && user?.friend?.status==='pending'">
+              <button mat-icon-button color="warning" (click)="sendFriendRequest(user,'Reject')"> 
+                <mat-icon>close</mat-icon></button>
+            </div>
+          </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+        
+ 

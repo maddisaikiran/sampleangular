@@ -1,0 +1,31 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+   margin-top: 40px;
+  }
+  .button{
+      width:100px;
+      height:50px;
+  }
+  
+  .container{
+      padding: 1%;
+      background-color: #B3E5FC;
+      height:72.8%;
+      width: 1020px;
+  }
+  .page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+   
+} 
+.page-box {
+      min-height: 70px;
+      background: #1e293b;
+      margin: 0 -1rem;
+      
+    }

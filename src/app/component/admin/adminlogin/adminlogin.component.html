@@ -1,0 +1,29 @@
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                <h2>Admin Login</h2>
+                    <form autocomplete="off">
+                        <div class="mb-3">
+                            <label for="name" >Admin Name:</label><br/>
+                            <input type="text" [(ngModel)]="adm.name"  placeholder="Enter Admin Name" id="name" name="name">
+                            
+                          </div>
+                          <div class="mb-3">
+                            <label for="password">Password:</label><br/>
+                            <input type="password" [(ngModel)]="adm.pass" placeholder="Enter Password" id="password" name="password">
+                          </div>
+                       
+                        <button type="submit" (click)="loginAdminAngular(adm.name,adm.pass)" class="btn btn-primary">Admin Sign In</button><br/>
+                       
+                    </form>
+                    <div class="my"><b><a routerLink="/landingpage">Go to Main Page</a></b></div>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>

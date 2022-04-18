@@ -1,0 +1,76 @@
+
+  
+        <button type="reset" class="btn btn-primary" routerLink="/admindashboard"><mat-icon>undo</mat-icon></button>
+                 
+<div class="search-user">
+        <input class="form-control" [(ngModel)]="searchText" placeholder="Search" autocomplete="off">
+   
+</div>
+
+
+
+    <div class="wrapper">
+        <div class="content-wrapper" style="min-height: 2077.69px;">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">All Users Details</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-bordered table-hover" data-widget="expandable-table"
+                                        aria-expanded="true">
+                                        <thead class="thead-light">
+                                            <tr>
+                                              
+                                                <th>FullName</th>
+                                                <th>Mobile</th>
+                                                <th>Email</th>
+                                                <th class="text-center">Status</th>
+                                                <th class="text-center" colspan="2">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngFor="let user of users | filter:searchText">
+                                            <tr>
+                                               
+                                                <td>{{user.fullName}}</td>
+                                                <td>{{user.mobile}}</td>
+                                                <td>{{user.email}}</td>
+                                                
+                                                <td>
+                                                    <div *ngIf="user.userStatus == true"><span
+                                                            class="badge badge-success">{{user.userStatus |
+                                                            userStatus}}</span> </div>
+                                                    <div *ngIf="user.userStatus == false"><span
+                                                            class="badge badge-danger">{{user.userStatus |
+                                                            userStatus}}</span> </div>
+
+                                                </td>
+                                                <td class="text-center">
+                                                    <div *ngIf="user.userStatus">
+                                                    <button type="button" class="btn btn-primary" (click)="update(user)"><mat-icon>done</mat-icon></button>
+                                                        </div>
+                                                    &nbsp;&nbsp;
+                                                    &nbsp;
+                                                    <div *ngIf="!user.userStatus">
+                                                         <button type="button" class="btn btn-primary"
+                                                        (click)="delete(user)"><mat-icon>block</mat-icon></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+    
+                                        </tbody>
+                                    </table>
+                                </div>
+                            
+                            </div>
+                            
+                        </div>
+                      
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>

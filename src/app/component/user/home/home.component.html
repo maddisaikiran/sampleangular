@@ -1,0 +1,83 @@
+<div class="container-fluid page">
+    <div class="page-box">
+       
+        <div class="my">Home</div>
+        
+    </div>
+  </div> 
+
+  <div class="wrapper">
+
+
+   
+    <div class="content-wrapper" style="min-height: 2077.69px;">
+        
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <h1>Manage My TimeLine</h1>
+                    </div>
+                </div>
+                <button title="Add Timeline" mat-icon-button routerLink="/password/addtimeline">
+                    &nbsp;&nbsp;&nbsp;<mat-icon>add_box</mat-icon></button>
+            </div>
+        </section>
+
+       
+        <section class="content">
+            <div class="container-fluid">
+                <div class="card-header">
+                    <h3 class="card-title">All My TimeLine List</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            
+                            <div class="card-body">
+                                <table class="table table-bordered table-hover" data-widget="expandable-table"
+                                    aria-expanded="true">
+                                    <thead class="thead-light">
+                                        <tr>
+                                           
+                                            <th>Image</th>
+                                            
+                                            <th>Messages</th>
+                                            <th>delete</th>
+                                          
+                                        </tr>
+                                    </thead>
+                                          <tbody *ngFor="let timeline of timelines"> 
+                                      
+                                        <tr>
+                                            
+                                            <td><img [src]="timeline.image"></td>
+                                            
+                                            <td style="font-size: medium">{{timeline.message}}</td>
+                                            <td>
+                                                <a (click)="delete(timeline.timeId)" class="pointer" style="color: red;"><mat-icon>delete</mat-icon></a>
+                                                
+                                            </td>
+                                           
+                                        </tr>
+
+                                    </tbody>
+                                
+
+                                </table>
+                            </div>
+                         
+                            </div>
+                        
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+  
+    
+  

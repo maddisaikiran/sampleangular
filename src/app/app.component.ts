@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +8,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'sample-project';
-  // router: any;
+  title = 'Facebook Application';
    ngOnInit() {
-   //   this.router.navigate(["/home"]);
+     this.changeTitle();
    }
+   constructor(private router: Router, private titleService: Title, private activePage: ActivatedRoute){
 
-   
+   }
+   changeTitle(){
+     this.router.events.subscribe(event => {
+       switch(true) {
+         case event instanceof NavigationEnd:
+           let child = this.activePage.firstChild;
 
-   constructor(private router: Router){
+           while(child.firstChild){
+             child = child.firstChild;
+           }
 
+           this.titleService.setTitle(child.snapshot.data.title);
+           break;
+
+        default:
+          break;
+       }
+     })
    }
 }
