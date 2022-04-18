@@ -3,10 +3,9 @@ import { Liked } from "./liked";
 import { User } from "./user";
 
 export class Timeline {
-    timeId: number;
+    id: number;
     image: String;
     message: String;
-    count: number;
     user: User;
     likes: Liked[];
     comments: Comment[];

@@ -15,6 +15,6 @@ export class CommentService {
   }
 
   public getCommentsByMessageId(timeId: number): Observable<any>{
-    return this.http.get<any>("http://localhost:8080/comment/"+timeId);
+    return this.http.get<any>("http://localhost:8080/comment/time/"+timeId);
   }
 }

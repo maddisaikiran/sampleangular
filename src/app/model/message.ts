@@ -2,7 +2,7 @@ import { User } from "./user";
 
 export class Message {
 
-    messageId: number;
+    id: number;
     user: User;
     friend: User;
     message: String;

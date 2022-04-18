@@ -57,7 +57,11 @@ this.commentService.createComment(this.comments).subscribe(res=>{
   alertify.success("comment added");   
   this.commentForm.reset({});
   this.getUserFriendsTimelines();
-})
+},
+error =>{
+  alertify.error("comment size must be 6 to 100");
+}
+)
   }
 
   addTimelineToLike(userLike : Timeline){
@@ -78,10 +82,10 @@ this.commentService.createComment(this.comments).subscribe(res=>{
       this.timelines=resp.data;
       if(this.timelines.length> 0){
         for(let i in this.timelines){
-          this.likeService.getUserLikesByMessageById(this.timelines[i].timeId).subscribe((res) => {
+          this.likeService.getUserLikesByMessageById(this.timelines[i].id).subscribe((res) => {
                  this.timelines[i].likes = res.data;               
                });
-               this.commentService.getCommentsByMessageId(this.timelines[i].timeId).subscribe(res =>{
+               this.commentService.getCommentsByMessageId(this.timelines[i].id).subscribe(res =>{
                 this.timelines[i].comments = res.data;          
               });
         }

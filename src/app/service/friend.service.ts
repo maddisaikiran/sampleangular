@@ -13,7 +13,7 @@ export class FriendService {
   constructor(private http: HttpClient,private router: Router) { }
 
   public  createRequest(newRequest: Friend): Observable<Friend>{
-    return this.http.post<Friend>("http://localhost:8080/friends/createrequest", newRequest);
+    return this.http.post<Friend>("http://localhost:8080/friends/request", newRequest);
         
 }
 

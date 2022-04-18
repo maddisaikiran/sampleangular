@@ -3,7 +3,7 @@ import { User } from "./user";
 
 export class Comment {
 
-    commentId: number;
+    id: number;
     timeline: Timeline;
     user: User;
     comment: String;

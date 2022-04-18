@@ -37,7 +37,7 @@ export class MytimelineComponent implements OnInit {
 getlikes(){
   if(this.timelines.length > 0){
     for (let i in this.timelines) {
-      this.likedService.getUserLikesByMessageById(this.timelines[i].timeId).subscribe(res =>{
+      this.likedService.getUserLikesByMessageById(this.timelines[i].id).subscribe(res =>{
         this.timelines[i].likes = res.data; 
         console.log(this.timelines[i].likes.length);
         this.count = this.timelines[i].likes.length;
@@ -48,7 +48,7 @@ getlikes(){
 getcomments(){
   if(this.timelines.length > 0){
     for (let i in this.timelines) {
-      this.commentService.getCommentsByMessageId(this.timelines[i].timeId).subscribe(res =>{
+      this.commentService.getCommentsByMessageId(this.timelines[i].id).subscribe(res =>{
         this.timelines[i].comments = res.data;
       });
     }

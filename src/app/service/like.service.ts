@@ -18,6 +18,6 @@ export class LikeService {
   }
 
   public getUserLikesByMessageById(timeId: number): Observable<any> {
-    return this.http.get<any>("http://localhost:8080/like/"+timeId);
+    return this.http.get<any>("http://localhost:8080/like/time/"+timeId);
   }
 }
