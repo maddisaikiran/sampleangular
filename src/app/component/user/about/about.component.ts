@@ -17,8 +17,8 @@ export class AboutComponent {
     this.userService.getUserById(this.user.id).subscribe(
       (resp) => {
         this.user.fullName = resp.data.fullName;
-        this.user.mobile = resp.data.mobile;
-        this.user.email = resp.data.email;
+        this.user.mobileNo = resp.data.mobileNo;
+        this.user.emailId = resp.data.emailId;
       },
     );
    }

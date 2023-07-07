@@ -4,27 +4,27 @@
             <div class="card">
                 <div class="text-center">
                 <h2>Login</h2>
-                
+
                     <form [formGroup]="loginForm" autocomplete="off">
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Email" [(ngModel)]="user.email"
+                            <input type="text" class="form-control" placeholder="Email" [(ngModel)]="user.emailId"
                             #email="ngModel" name="email" [ngModelOptions]="{standalone: true}">
-                            
+
                           </div>
                           <div class="mb-3">
                             <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" #password="ngModel"
     name="password" [ngModelOptions]="{standalone: true}">
                           </div>
-                       
+
                         <button type="submit" (click)="login()" class="btn btn-primary">Sign In</button><br/>
-                       
+
                     </form>
                     <div class="my"><b><a routerLink="/signup">New User? Click to Register</a></b><br/></div><br/>
                     <b><a routerLink="/landingpage">Go to Main Page</a></b>
                 </div>
-            </div>  
+            </div>
         </div>
     </div>
-</div>                        
+</div>
 
 

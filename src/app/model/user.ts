@@ -7,8 +7,8 @@ import { Timeline } from "./timeline";
 export class User {
     id:number;
     fullName:string;
-    mobile:number;
-    email:string;
+    mobileNo:number;
+    emailId:string;
     password:string;
     userStatus:boolean;
     friend: Friend;

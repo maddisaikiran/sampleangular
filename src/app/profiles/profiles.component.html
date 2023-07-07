@@ -15,8 +15,8 @@
         <tbody class="tbody">
           <tr *ngFor="let user of userDetails">
             <td>{{user.fullName}}</td>
-            <td>{{user.mobile}}</td>
-            <td>{{user.email}}</td>
+            <td>{{user.mobileNo}}</td>
+            <td>{{user.emailId}}</td>
             <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                 (click)="edit(user)"><mat-icon>create</mat-icon></button></td>
           </tr>
@@ -24,7 +24,7 @@
       </table>
     </div>
   </div>
-  
+
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -49,12 +49,12 @@
             </div>
             <div class="form-group">
               <label for="number">User Mobile :</label>
-              <input type="number" #mobile [(ngModel)]="userToUpdate.mobile" name="mobile" id="mobile"
+              <input type="number" #mobile [(ngModel)]="userToUpdate.mobileNo" name="mobile" id="mobile"
                 class="form-control" placeholder="User Mobile">
             </div>
             <div class="form-group">
               <label for="text">User Email :</label>
-              <input type="text" #email [(ngModel)]="userToUpdate.email" name="email" id="email"
+              <input type="text" #email [(ngModel)]="userToUpdate.emailId" name="email" id="email"
                 class="form-control" placeholder="User Email">
             </div>
             <div class="form-group">

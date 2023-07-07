@@ -35,7 +35,7 @@ export class UserloginComponent implements OnInit {
     .getUserByEmailIdAndPassword(this.user)
     .subscribe((userData: User) => {
       this.user = userData;
-      if (userData != null && this.user.userStatus == true && this.user.email == userData.email && this.user.password== userData.password) {
+      if (userData != null && this.user.userStatus == true && this.user.emailId == userData.emailId && this.user.password== userData.password) {
         localStorage.setItem("user", JSON.stringify(userData));
         localStorage.setItem("name",this.user.fullName);
         alertify.success("User login successfully goes to dashboard",Date())
@@ -47,6 +47,6 @@ export class UserloginComponent implements OnInit {
       }
 });
 }
-        
-  
+
+
 }

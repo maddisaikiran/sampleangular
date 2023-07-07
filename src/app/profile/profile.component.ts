@@ -22,11 +22,11 @@ export class ProfileComponent implements OnInit, ComponentCanDeactivate {
 user: User;
 updateForm = new FormGroup({
   fullName:new FormControl(''),
-  mobile: new FormControl(''),
-  email: new FormControl('')
+  mobileNo: new FormControl(''),
+  emailId: new FormControl('')
 })
-constructor(private service: UserService) { 
-  
+constructor(private service: UserService) {
+
 }
 ngOnInit() {
 
@@ -34,8 +34,8 @@ ngOnInit() {
     this.service.getUserById(this.user.id).subscribe(
       (resp) => {
         this.user.fullName = resp.data.fullName;
-        this.user.mobile = resp.data.mobile;
-        this.user.email = resp.data.email;
+        this.user.mobileNo = resp.data.mobileNo;
+        this.user.emailId = resp.data.emailId;
       },
     );
 }

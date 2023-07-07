@@ -4,38 +4,38 @@
           <div class="card">
               <div class="text-center">
               <h2>Create an account</h2>
-              
+
                   <form [formGroup]="signupform" autocomplete="off">
                       <div class="mb-3">
-                          <input type="text" class="form-control" placeholder="Full Name" name="name" #name="ngModel" [(ngModel)]="user.fullName" required 
+                          <input type="text" class="form-control" placeholder="Full Name" name="name" #name="ngModel" [(ngModel)]="user.fullName" required
                           pattern="[a-zA-Z]{4,10}" [ngModelOptions]="{standalone: true}" [class.is-invalid]="name.invalid && name.touched">
                               <div *ngIf="name.invalid && name.touched" class="text-danger">
                                    <small *ngIf="name.errors.pattern" style="font-size: 15px;">Fullname is Must 4 to 10 words</small>
                                    <small *ngIf="name.errors.required" style="font-size: 15px;">Fullname is required</small>
-                       </div> 
-                          
+                       </div>
+
                         </div>
                         <div class="mb-3">
-                         
+
                           <input type="number" class="form-control" placeholder="Phone Number" required pattern="[1-9]{1}[0-9]{9}"
-        name="mobile" #mobile="ngModel" [(ngModel)]="user.mobile" [ngModelOptions]="{standalone: true}">
+        name="mobile" #mobile="ngModel" [(ngModel)]="user.mobileNo" [ngModelOptions]="{standalone: true}">
         <div *ngIf="mobile.invalid && mobile.touched" class="text-danger">
             <small *ngIf="mobile.errors.pattern" style="font-size: 15px;">mobile must be 10 Digits</small>
             <small *ngIf="mobile.errors.required" style="font-size: 15px;">mobile is required</small>
-        </div> 
+        </div>
                         </div>
                       <div class="mb-3">
-                       
-                        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="user.email" required pattern="[a-zA-Z0-9]{2,}[@][a-zA-Z]{2,7}[.][a-zA-Z]{2,8}" 
+
+                        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="user.emailId" required pattern="[a-zA-Z0-9]{2,}[@][a-zA-Z]{2,7}[.][a-zA-Z]{2,8}"
                         #email="ngModel" name="email" [ngModelOptions]="{standalone: true}">
                         <div *ngIf="email.invalid && email.touched" class="text-danger">
                           <small *ngIf="email.errors.pattern" style="font-size: 15px;">Required Email pattern is need</small>
                           <small *ngIf="email.errors.required" style="font-size: 15px;">Email is required</small>
                         </div>
-                        
+
                       </div>
                       <div class="mb-3">
-                      
+
                         <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" #password="ngModel" required
         name="password" [ngModelOptions]="{standalone: true}">
         <div *ngIf="password.invalid && password.touched" class="text-danger">
@@ -43,24 +43,24 @@
         </div>
                       </div>
                       <div class="mb-3">
-                      
+
                         <input type="password" class="form-control" placeholder="Confirm Password" name="cpassword" (ngModel)="user.password" required #cpassword="ngModel" [ngModelOptions]="{standalone: true}">
                         <div *ngIf="cpassword.touched">
                             <small class="text-danger" *ngIf="cpassword.value !== password.value" style="font-size: 15px;">Password not match</small>
                          </div>
                       </div>
-                     
+
                       <button type="submit" (click)="signup()" class="btn btn-primary">Register</button><br/>
-                     
+
                   </form>
                   <b><a routerLink="/userlogin">Already Registered? Click to Login</a></b><br/>
                   <b><a routerLink="/landingpage">Go to Main Page</a></b>
 
               </div>
-          </div>  
+          </div>
       </div>
   </div>
-</div>                   
+</div>
 
-                
+
 

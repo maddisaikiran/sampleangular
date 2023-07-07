@@ -15,8 +15,8 @@ export class ProfilesComponent implements OnInit {
   userToUpdate = {
     id: null,
     fullName:"",
-    mobile:null,
-    email:"",
+    mobileNo:null,
+    emailId:"",
     password:"",
     userStatus:true,
     admin:null,
@@ -25,8 +25,8 @@ export class ProfilesComponent implements OnInit {
     likes:null,
     messages:null
   }
-  
-  constructor(private service: UserService, private router: Router) { 
+
+  constructor(private service: UserService, private router: Router) {
     this.getUsersDetails();
   }
   getUsersDetails() {
