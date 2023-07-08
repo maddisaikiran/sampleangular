@@ -6,6 +6,7 @@ import { FriendService } from 'src/app/service/friend.service';
 import { MessageService } from 'src/app/service/message.service';
 import * as alertify from 'alertifyjs';
 import { ComponentCanDeactivate } from 'src/app/component-can-deactivate';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { ComponentCanDeactivate } from 'src/app/component-can-deactivate';
   styleUrls: ['./friends.component.css']
 })
 export class FriendsComponent implements OnInit, ComponentCanDeactivate{
+isNoRecordsFound: boolean = false;
   canLeave(): boolean{
     if(this.messageForm.dirty){
       return window.confirm("You have some unsaved changes. Are you sure you want to navigate?");
@@ -34,11 +36,17 @@ messages: Message[];
     this.createForm();
     this.loggedInUser= JSON.parse(localStorage.getItem("user"));
     this.getUserFriends();
-    this.messageService.getMessagesByFriendId(this.loggedInUser.id).subscribe(res=>{
-this.messages = res.data;
+    if(!_.isNil(this.users)){
+    this.messageService.getMessagesByFriendId(this.loggedInUser.id).subscribe({
+    next: (res) =>{
+this.messages = res;
 console.log(this.messages);
-    });
+    }
+  });
   }
+  }
+
+
   getMyMessages(){
     this.messageService.getMessagesByUserId(this.loggedInUser.id).subscribe(res=>{
       this.messageList = res.data;
@@ -62,10 +70,16 @@ console.log(this.messages);
                alertify.success("message sent successfully");
                this.messageForm.reset({});
     })
-  }    
+  }
   private getUserFriends(){
     this.service.getUserByFriendByOrderStatusById(this.loggedInUser.id).subscribe((resp) => {
       this.users=resp.data;
+      if(!_.isNil(this.users) && this.users.length > 0){
+      console.log("user data");
+       this.isNoRecordsFound = false
+      } else{
+      this.isNoRecordsFound = true;
+      }
     },
     );
 }

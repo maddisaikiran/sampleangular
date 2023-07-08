@@ -23,22 +23,22 @@ export class MytimelineComponent implements OnInit {
    count: number;
 
 
-  constructor(private service: TimelineService, private router: Router, private likedService: LikeService, private commentService: CommentService) { 
+  constructor(private service: TimelineService, private router: Router, private likedService: LikeService, private commentService: CommentService) {
   }
-  
+
   ngOnInit() {
-   
+
       this.user = JSON.parse(localStorage.getItem("user"));
         this.service.getAllMyTimelinesById(this.user.id).subscribe(resp => {
          this.timelines = resp.data;
   })
-  
+
 }
 getlikes(){
   if(this.timelines.length > 0){
     for (let i in this.timelines) {
       this.likedService.getUserLikesByMessageById(this.timelines[i].id).subscribe(res =>{
-        this.timelines[i].likes = res.data; 
+        this.timelines[i].likes = res.data;
         console.log(this.timelines[i].likes.length);
         this.count = this.timelines[i].likes.length;
       });
@@ -60,10 +60,10 @@ delete(timeId: number){
     alertify.success("deleted successfully");
     this.ngOnInit();
   });
-    
+
 
 }
-  
+
   }
 
 

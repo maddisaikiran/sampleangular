@@ -2,7 +2,7 @@
     color: white;
     padding: 0 1rem;
     background: #f1f5f9;
-} 
+}
 .page-box {
       min-height: 70px;
       background: #1e293b;
@@ -12,4 +12,28 @@
 .my{
     text-align: center;
     padding-top: 10px;
+}
+
+.error-msg-outer-container {
+  margin: 16px 12px !important;
+  width: 99%;
+}
+
+.error-msg-inner-container {
+  border: 1px solid #707070;
+  padding: 20px 14px;
+  border-radius: 6px
+}
+
+ p {
+  color: #333333;
+  font-size: 18px;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.col-md-12 {
+max-width: 99%;
 }

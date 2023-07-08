@@ -3,13 +3,17 @@
       <div class="my">Friends List</div>
   </div>
 </div>
+<div id="proList">
+  <ng-container *ngIf="isNoRecordsFound then noResults; else showResults">
+  </ng-container>
+  <ng-template #showResults>
 <div class="wrapper">
-  <div class="content-wrapper" style="min-height: 400px;">
+  <div class="content-wrapper">
     <section class="content">
       <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-      <table class="table table-bordered" style=" width:80%;" >
+      <table class="table table-bordered" style=" width:100%;" >
         <thead>
           <tr>
             <th>Full Name</th>
@@ -18,24 +22,24 @@
             <th>Sent Message</th>
            <th>View My Messages</th>
             <th>View Friend Messages</th>
-            
+
           </tr>
         </thead>
         <tbody class="tbody">
           <tr *ngFor="let user of users">
-            
+
             <td>{{user.fullName}}</td>
-            <td>{{user.mobile}}</td>
-            <td>{{user.email}}</td>
+            <td>{{user.mobileNo}}</td>
+            <td>{{user.emailId}}</td>
         <td>
           <form [formGroup]="messageForm">
             <div class="form-group">
               <textarea formControlName="message" class="form-control" placeholder="Leave a message"></textarea>
             </div>
             <div class="form-group">
-              
+
               <button type="button" style="background-color: blue; color: aliceblue;" (click)="addSubmit(user)">Post</button>
-           
+
           </div>
           </form>
           <br/>
@@ -47,8 +51,8 @@
              </button>
              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <div *ngFor="let message of messageList" >
-                
-                <div *ngIf="message.friend.id == user.id"> 
+
+                <div *ngIf="message.friend.id == user.id">
                   <div class="dropdown-item">
                     <div style="color: blue; font-size: 15px;">
                     {{message.message}}
@@ -59,26 +63,26 @@
              </div>
           </div>
         </td>
-        <td> 
+        <td>
           <div class="dropdown">
              <button class="btn btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
               <mat-icon> comment </mat-icon>
              </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                
+
                     <div *ngFor="let message of messages" >
-                         <div *ngIf="message.user.id == user.id"> 
+                         <div *ngIf="message.user.id == user.id">
                             <div class="dropdown-item">
                               <div style="color: blue; font-size: 15px;">
                                 {{message.message}}
                               </div>
-                      
+
                             </div>
                         </div>
                     </div>
-                   
+
                   </div>
-          </div>    
+          </div>
         </td>
           </tr>
         </tbody>
@@ -89,5 +93,18 @@
     </section>
   </div>
 </div>
-            
-
+  </ng-template>
+  <ng-template #noResults>
+    <div class="row error-msg-outer-container" id="curDashErrMsgCont">
+      <div class="col-md-12 error-msg-inner-container">
+        <div class="row no-margin">
+          <div class="col-md-12 text-center"> <img src="assets/friends-icon.png"
+                                                   style="max-width:26%"> </div>
+          <div class="col-md-12 mt-4 text-center">
+            <p class="no-margin" id="curDashErrMsg">Friends not found</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

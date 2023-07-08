@@ -1,17 +1,16 @@
 <div class="container-fluid page">
     <div class="page-box">
-       
+
         <div class="my">Home</div>
-        
+
     </div>
-  </div> 
-
+  </div>
+<ng-container *ngIf="isRecordNotFound then noResults; else showResults">
+</ng-container>
+<ng-template #showResults>
   <div class="wrapper">
-
-
-   
     <div class="content-wrapper" style="min-height: 2077.69px;">
-        
+
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -24,7 +23,7 @@
             </div>
         </section>
 
-       
+
         <section class="content">
             <div class="container-fluid">
                 <div class="card-header">
@@ -33,51 +32,61 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            
+
                             <div class="card-body">
                                 <table class="table table-bordered table-hover" data-widget="expandable-table"
                                     aria-expanded="true">
                                     <thead class="thead-light">
                                         <tr>
-                                           
+
                                             <th>Image</th>
-                                            
+
                                             <th>Messages</th>
                                             <th>delete</th>
-                                          
+
                                         </tr>
                                     </thead>
-                                          <tbody *ngFor="let timeline of timelines"> 
-                                      
+                                          <tbody *ngFor="let timeline of timelines">
+
                                         <tr>
-                                            
+
                                             <td><img [src]="timeline.image"></td>
-                                            
+
                                             <td style="font-size: medium">{{timeline.message}}</td>
                                             <td>
                                                 <a (click)="delete(timeline.timeId)" class="pointer" style="color: red;"><mat-icon>delete</mat-icon></a>
-                                                
+
                                             </td>
-                                           
+
                                         </tr>
 
                                     </tbody>
-                                
-
                                 </table>
                             </div>
-                         
+
                             </div>
-                        
-
-
                     </div>
                 </div>
             </div>
         </section>
     </div>
 </div>
+</ng-template>
+<ng-template #noResults>
+    <div class="row error-msg-outer-container" id="curDashErrMsgCont">
+      <div class="col-md-12 error-msg-inner-container">
+        <div class="row no-margin">
+          <div class="col-md-12 mt-4 text-center">
+            <p class="no-margin" id="curDashErrMsg">Timelines not found</p>
+            <br>
+            <button title="Add Timeline" mat-icon-button routerLink="/password/addtimeline">
+              &nbsp;&nbsp;&nbsp;<mat-icon>add_box</mat-icon></button>
+            <p class="no-margin">Click button to add timelines</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</ng-template>
 
-  
-    
-  
+
+

@@ -3,11 +3,11 @@
                 <div class="page-box">
                     <div class="my">Friends Timeline</div>
                 </div>
-              </div> 
+              </div>
 
 
               <div class="wrapper">
-   
+
                 <div class="content-wrapper" style="min-height: 400px;">
                   <section class="content">
                     <div class="container-fluid">
@@ -27,14 +27,14 @@
       <tbody class="tbody">
         <tr *ngFor="let timeline of timelines">
           <td>{{timeline.user.fullName}}</td>
-          <td>{{timeline.user.mobile}}</td>
+          <td>{{timeline.user.mobileNo}}</td>
           <td><img [src]="timeline.image"></td>
           <td>{{timeline.message}}</td>
-          <td>    
-         
+          <td>
+
                 {{timeline?.likes?.length}}
-              
-          <button mat-icon-button color="primary" (click)="addTimelineToLike(timeline)"> 
+
+          <button mat-icon-button color="primary" (click)="addTimelineToLike(timeline)">
             <mat-icon>thumb_up_alt</mat-icon></button>
           </td>
           <td>
@@ -44,20 +44,20 @@
                 <textarea formControlName="comment" class="form-control" placeholder="Leave a comment"></textarea>
               </div>
               <div class="form-group">
-                
+
                 <button type="button" style="background-color: blue; color: aliceblue;" (click)="addSubmit(timeline)">Post</button>
-             
+
             </div>
-           
+
             </form>
-           
-            
+
+
           </td>
         </tr>
-        
+
       </tbody>
-     
-    </table>                   
+
+    </table>
                           </div>
                       </div>
                     </div>
@@ -70,9 +70,9 @@
 
 
 
-    
-    
-          
-                             
+
+
+
+
 
 

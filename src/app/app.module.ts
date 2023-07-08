@@ -31,6 +31,7 @@ import { MytimelineComponent } from './component/user/mytimeline/mytimeline.comp
 import { AdmindashboardComponent } from './component/admin/admindashboard/admindashboard.component';
 import { AboutComponent } from './component/user/about/about.component';
 import { UserStatusPipe } from './user-status.pipe';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { UserStatusPipe } from './user-status.pipe';
     SidenavComponent,
     AboutComponent,
     UserStatusPipe,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -62,9 +63,10 @@ import { UserStatusPipe } from './user-status.pipe';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     Ng2SearchPipeModule,
-    MaterialModule
+    MaterialModule,
+    MDBBootstrapModule.forRoot()
 
   ],
   providers: [],

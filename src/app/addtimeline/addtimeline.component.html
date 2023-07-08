@@ -11,12 +11,28 @@
                     <div class="form-group">
                         <label>Image</label>
                     </div>
-                    <div class="form-row" style="margin: top -10px">
-                        <div class="col">
-                            <input type="text" formControlName="image" class="form-control" placeholder="TimeLine image">
-                        </div>
-                    </div>
+<!--                    <div class="form-row" style="margin: top -10px">-->
+<!--                        <div class="col">-->
+<!--                            <input type="text" formControlName="image" class="form-control" placeholder="TimeLine image">-->
+<!--                        </div>-->
+<!--                    </div>-->
+
                 </div>
+              <div class="col-6">
+                <div class="offset-md-3 col-6">
+                  <!--Card-->
+                  <mdb-card>
+                    <!--Card image-->
+                    <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+<!--                      <mdb-card-img id="employeeImage" [src]="employee.employeeImageUrl" (ngInit)="checkIfDefaultImage()"-->
+<!--                                    alt="Employee profile image"></mdb-card-img>-->
+                      <a>
+                        <div class="mask rgba-white-slight"></div>
+                      </a>
+                    </div>
+                  </mdb-card>
+                </div>
+              </div>
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>Message</label>
@@ -34,9 +50,9 @@
                     </div>
                 </div>
             </div>
-      
+
     </form>
 </div>
-    
+
 
 

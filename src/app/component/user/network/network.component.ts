@@ -13,12 +13,12 @@ export class NetworkComponent implements OnInit {
   searchText : any;
   userDetails : User[];
   loggedInUser: User;
- 
+
   constructor(private service: FriendService) {
-    
+
   }
- 
-  ngOnInit() {  
+
+  ngOnInit() {
     this.loggedInUser= JSON.parse(localStorage.getItem("user"));
     this.getUserFriends();
 }
@@ -49,6 +49,10 @@ this.getUserFriends();
 }
 
 checkIsFriend(friendId,friend,status){
+console.log(friend);
+console.log(friendId);
+console.log(status);
+console.log(this.loggedInUser.id);
 if(friend && (friend.userId == this.loggedInUser.id || friend.friendId == this.loggedInUser.id) && friend.status==status){
 return true;
 }return false;
